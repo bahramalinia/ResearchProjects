@@ -25,7 +25,7 @@ collude with other EVs. Extensive simulations using real traces
 demonstrate the effectiveness of our online scheduling algorithms
 as compared to the optimal non-committed offline solution.
 
-##################################################################################################
+##########################################################################################
 • B. Alinia, M. H. Hajiesmaili, M. S. Talebi, and N. Crespi, “Competitive Online Scheduling Algorithms with Applications in Deadline-
 Constrained EV Charging,” in Proc. of IEEE/ACM International Symposium on Quality of Service (IWQoS), 2018.
 acceptance ratio: 20.8%
@@ -52,7 +52,7 @@ technique could also be used to simplify the competitive analysis
 of some existing algorithms, and thus could be of independent
 interest.
 
-##################################################################################################
+##########################################################################################
 • B. Alinia, M. H. Hajiesmaili, A. Khonsari and, N. Crespi,“Maximum-Quality Tree Construction for Deadline-Constrained Aggregation in WSNs,” IEEE Sensors Journal, 2017.
 
 Abstract—In deadline-constrained wireless sensor networks
@@ -81,7 +81,7 @@ performance and appreciably outperform methods that work
 on a fixed aggregation tree by obtaining better quality of
 aggregation.
 
-##################################################################################################
+##########################################################################################
 • B. Alinia, M. H. Hajiesmaili, and A. Khonsari, “On the Construction of Maximum-Quality Aggregation Trees in Deadline-Constrained
 WSNs,” In Proc. of IEEE INFOCOM, 2015.
 acceptance ratio: 19.3%
@@ -113,7 +113,7 @@ the proposed algorithms significantly improve QoA by 101% and
 93% on average compared to the best, to our knowledge, existing
 alternative methods.
 
-##################################################################################################
+##########################################################################################
 • B. Alinia, H. Yousefi, M. S. Talebi, and A. Khonsari, ”Maximizing Quality of Aggregation in Delay-Constrained Wireless Sensor Networks”,
 IEEE Communications Letters, 2013.
 
