@@ -1,0 +1,181 @@
+\begin{thebibliography}{10}
+
+\bibitem{bloomberg}
+``https://www.bloomberg.com/news/articles/2017-07-06/electric-cars-are-about-to-boost-global-power-demand-300-fold,''
+  2017.
+
+\bibitem{Zhao}
+S.~Zhao, X.~Lin, and M.~Chen, ``Peak-minimizing online ev charging:
+  Price-of-uncertainty and algorithm robustification,'' in {\em Proc. of IEEE
+  INFOCOM}, 2015.
+
+\bibitem{mukherjee2015review}
+J.~C. Mukherjee and A.~Gupta, ``A review of charge scheduling of electric
+  vehicles in smart grid,'' {\em IEEE Systems Journal}, vol.~9, no.~4,
+  pp.~1541--1553, 2015.
+
+\bibitem{Tang}
+W.~Tang, S.~Bi, and Y.~J.~A. Zhang, ``Online coordinated charging decision
+  algorithm for electric vehicles without future information,'' {\em IEEE
+  Transactions on Smart Grid}, vol.~5, no.~6, pp.~2810--2824, 2014.
+
+\bibitem{wu2017two}
+D.~Wu, H.~Zeng, C.~Lu, and B.~Boulet, ``Two-stage energy management for office
+  buildings with workplace ev charging and renewable energy,'' {\em IEEE
+  Transactions on Transportation Electrification}, vol.~3, no.~1, pp.~225--237,
+  2017.
+
+\bibitem{lee2016adaptive}
+G.~Lee, T.~Lee, Z.~Low, S.~H. Low, and C.~Ortega, ``Adaptive charging network
+  for electric vehicles,'' in {\em Proc. of IEEE GlobalSIP}, 2016.
+
+\bibitem{Wen}
+C.-K. Wen, J.-C. Chen, J.-H. Teng, and P.~Ting, ``Decentralized plug-in
+  electric vehicle charging selection algorithm in power systems,'' {\em IEEE
+  Transactions on Smart Grid}, vol.~3, no.~4, pp.~1779--1789, 2012.
+
+\bibitem{Shroff2014}
+Z.~Zheng and N.~Shroff, ``Online welfare maximization for electric vehicle
+  charging with electricity cost,'' in {\em Proc. of ACM e-energy},
+  pp.~253--263, ACM, 2014.
+
+\bibitem{WTang}
+W.~Tang and Y.~J.~A. Zhang, ``A model predictive control approach for
+  low-complexity electric vehicle charging scheduling: optimality and
+  scalability,'' {\em IEEE Transactions on Power Systems}, vol.~32, no.~2,
+  pp.~1050--1063, 2017.
+
+\bibitem{Chen}
+S.~Chen and L.~Tong, ``{iEMS} for large scale charging of electric vehicles:
+  Architecture and optimal online scheduling,'' in {\em Proc. of
+  SmartGridComm}, 2012.
+
+\bibitem{Xiang}
+Q.~Xiang, F.~Kong, X.~Liu, X.~Chen, L.~Kong, and L.~Rao, ``Auc2charge: An
+  online auction framework for eectric vehicle park-and-charge,'' in {\em Proc.
+  of ACM e-energy}, pp.~151--160, ACM, 2015.
+
+\bibitem{Robu}
+V.~Robu, E.~H. Gerding, S.~Stein, D.~C. Parkes, A.~Rogers, and N.~R. Jennings,
+  ``An online mechanism for multi-unit demand and its application to plug-in
+  hybrid electric vehicle charging,'' {\em Journal of Artificial Intelligence
+  Research}, vol.~48, pp.~175--230, 2013.
+
+\bibitem{PeakPrice}
+``http://www.pge.com/nots/rates/tariffs/rateinfo.shtml,'' 2018.
+
+\bibitem{Zhang2015eEnergy}
+Y.~Zhang, M.~Hajiesmaili, S.~Cai, M.~Chen, and Q.~Zhu, ``Peak-aware online
+  economic dispatching for microgrids,'' {\em IEEE Transactions on Smart Grid},
+  vol.~9, no.~1, pp.~323--335, 2018.
+
+\bibitem{borodin2005online}
+A.~Borodin and R.~El-Yaniv, {\em Online computation and competitive analysis}.
+\newblock cambridge university press, 2005.
+
+\bibitem{approx}
+V.~V. Vazirani, {\em Approximation algorithms}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{Carr}
+R.~D. Carr, L.~K. Fleischer, V.~J. Leung, and C.~A. Phillips, ``Strengthening
+  integrality gaps for capacitated network design and covering problems,''
+  tech. rep., Sandia National Labs., Albuquerque, NM (US); Sandia National
+  Labs., Livermore, CA (US), 1999.
+
+\bibitem{mukherjee2017distributed}
+J.~C. Mukherjee and A.~Gupta, ``Distributed charge scheduling of plug-in
+  electric vehicles using inter-aggregator collaboration,'' {\em IEEE
+  Transactions on Smart Grid}, vol.~8, no.~1, pp.~331--341, 2017.
+
+\bibitem{de2017impact}
+P.~M. de~Quevedo, G.~Mu{\~n}oz-Delgado, and J.~Contreras, ``Impact of electric
+  vehicles on the expansion planning of distribution systems considering
+  renewable energy, storage and charging stations,'' {\em IEEE Transactions on
+  Smart Grid}, 2017.
+
+\bibitem{shafie2018innovative}
+M.~Shafie-Khah, P.~Siano, D.~Z. Fitiwi, N.~Mahmoudi, and J.~P. Catal{\~a}o,
+  ``An innovative two-level model for electric vehicle parking lots in
+  distribution systems with renewable energy,'' {\em IEEE Transactions on Smart
+  Grid}, vol.~9, no.~2, pp.~1506--1520, 2018.
+
+\bibitem{He}
+Y.~He, B.~Venkatesh, and L.~Guan, ``Optimal scheduling for charging and
+  discharging of electric vehicles,'' {\em IEEE transactions on smart grid},
+  vol.~3, no.~3, pp.~1095--1105, 2012.
+
+\bibitem{malhotra2017distributed}
+A.~Malhotra, G.~Binetti, A.~Davoudi, and I.~D. Schizas, ``Distributed power
+  profile tracking for heterogeneous charging of electric vehicles,'' {\em IEEE
+  Transactions on Smart Grid}, vol.~8, no.~5, pp.~2090--2099, 2017.
+
+\bibitem{Moradijoz}
+M.~Moradijoz, M.~P. Moghaddam, M.~Haghifam, and E.~Alishahi, ``A
+  multi-objective optimization problem for allocating parking lots in a
+  distribution network,'' {\em International Journal of Electrical Power \&
+  Energy Systems}, vol.~46, pp.~115--122, 2013.
+
+\bibitem{DWang}
+D.~Wang, X.~Guan, J.~Wu, P.~Li, P.~Zan, and H.~Xu, ``Integrated energy exchange
+  scheduling for multimicrogrid system with electric vehicles,'' {\em IEEE
+  Transactions on Smart Grid}, vol.~7, no.~4, pp.~1762--1774, 2016.
+
+\bibitem{Zeng}
+M.~Zeng, S.~Leng, Y.~Zhang, and J.~He, ``Qoe-aware power management in
+  vehicle-to-grid networks: a matching-theoretic approach,'' {\em \emph{early
+  access}, IEEE Transactions on Smart Grid}, 2017.
+
+\bibitem{Shaaban}
+M.~F. Shaaban, M.~Ismail, E.~F. El-Saadany, and W.~Zhuang, ``Real-time pev
+  charging/discharging coordination in smart distribution systems,'' {\em IEEE
+  Transactions on Smart Grid}, vol.~5, no.~4, pp.~1797--1807, 2014.
+
+\bibitem{Tesla}
+``https://www.tesla.com/?redirect=no.''
+
+\bibitem{Karfopoulos}
+E.~L. Karfopoulos and N.~D. Hatziargyriou, ``Distributed coordination of
+  electric vehicles providing v2g services,'' {\em IEEE Transactions on Power
+  Systems}, vol.~31, no.~1, pp.~329--338, 2016.
+
+\bibitem{jin2017optimal}
+J.~Jin and Y.~Xu, ``Optimal storage operation under demand charge,'' {\em IEEE
+  Transactions on Power Systems}, vol.~32, no.~1, pp.~795--808, 2017.
+
+\bibitem{wang2017predictive}
+B.~Wang, Y.~Wang, H.~Nazaripouya, C.~Qiu, C.-C. Chu, and R.~Gadh, ``Predictive
+  scheduling framework for electric vehicles with uncertainties of user
+  behaviors,'' {\em IEEE Internet of Things Journal}, vol.~4, no.~1,
+  pp.~52--63, 2017.
+
+\bibitem{chen2014distributional}
+N.~Chen, L.~Gan, S.~H. Low, and A.~Wierman, ``Distributional analysis for model
+  predictive deferrable load control,'' in {\em Prof. of IEEE CDC},
+  pp.~6433--6438, 2014.
+
+\bibitem{Alinia2018ITS}
+B.~Alinia, M.~Hajiesmaili, and N.~Crespi, ``Online ev charging scheduling with
+  on-arrival commitment,'' {\em IEEE Transactions on Intelligent Transportation
+  Systems (to appear)}, 2018.
+
+\bibitem{Jain}
+N.~Jain, I.~Menache, J.~S. Naor, and J.~Yaniv, ``Near-optimal scheduling
+  mechanisms for deadline-sensitive jobs in large computing clusters,'' {\em
+  ACM Transactions on Parallel Computing}, vol.~2, no.~1, p.~3, 2015.
+
+\bibitem{firstfit}
+E.-C. Chang and C.~Yap, ``Competitive on-line scheduling with level of
+  service,'' {\em Journal of Scheduling}, vol.~6, no.~3, pp.~251--267, 2003.
+
+\bibitem{Santos}
+A.~Santos, N.~McGuckin, H.~Y. Nakamoto, D.~Gray, and S.~Liss, ``Summary of
+  travel trends: 2009 national household travel survey,'' tech. rep., 2011.
+
+\bibitem{kWhcost}
+``https://www.eia.gov/electricity/state/.''
+
+\bibitem{optimization2013gurobi}
+``Gurobi optimizer 5.0,'' {\em Gurobi: http://www.gurobi.com}, 2013.
+
+\end{thebibliography}

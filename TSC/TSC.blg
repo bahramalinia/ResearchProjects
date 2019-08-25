@@ -1,0 +1,23 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: TSC.aux
+The style file: ieeetr.bst
+Database file #1: ref.bib
+Warning--entry type for "bloomberg" isn't style-file defined
+--line 1 of file ref.bib
+Warning--entry type for "kWhcost" isn't style-file defined
+--line 15 of file ref.bib
+You're missing a field name---line 23 of file ref.bib
+ :   
+ :   %title={Online energy generation scheduling for microgrids with intermittent energy sources and co-generation},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--entry type for "PeakPrice" isn't style-file defined
+--line 101 of file ref.bib
+Repeated entry---line 444 of file ref.bib
+ : @online{kWhcost
+ :                ,
+I'm skipping whatever remains of this entry
+Warning--entry type for "Tesla" isn't style-file defined
+--line 626 of file ref.bib
+Warning--empty institution in Santos
+Warning--empty author in optimization2013gurobi
+(There were 2 error messages)
