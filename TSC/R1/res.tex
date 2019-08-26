@@ -59,7 +59,7 @@ foot=2cm,bottom=4cm]{geometry}
 \begin{document}
 
 
-\title{Response Letter for manuscript TSG-01885-2017 ``Online EV Scheduling Algorithms for Adaptive Charging Networks with Global Peak Constraints'' \\
+\title{Response Letter for manuscript TSUSC-2018-12-0140 \\ ``Online EV Scheduling Algorithms for Adaptive Charging Networks with Global Peak Constraints'' \\
 	\vspace{4mm} \large
 	by  Bahram~Alinia, Mohammad~H.~Hajiesmaili, Zachary J. Lee, Noel Crespi, and Enrique Mallada
 }
@@ -96,6 +96,11 @@ In what follows, we mention first the comments (as appeared in the decision lett
 
 \vspace{5mm}
 \noindent\textbf{Response:}
+In the revised version, we further clarified the significance of the theoretical results. Even though some assumptions are made for the theoretical analysis of the proposed algorithms, we note two important significance of our results: \textit{First}, the algorithms work effectively in practice as demonstrated in real-world trace-driven experiments, for the general cases without those assumptions; and \textit{secondly}, the theoretical analysis of underlying mathematical problems in the general setting are extremely challenging problems in the theoretical computer science literature, in particular, job scheduling problems. To the best of our knowledge, there is no deep theoretical understanding of online algorithms for the general setting of this problem. In the revised manuscript, we added a subsection, in Section II, and highlighted the theoretical significance of our paper. 
+
+In addition, in the paper, we clearly distinguished between the results in this paper and our previous conference paper on IEEE/ACM IWQoS 2018. Our work in this paper considers more general problem formulation, with global peak constraints, and a comprehensive revenue model. The developed algorithms in Section V, for the integral revenue model, are new in this work. Finally, the trace-driven experimental results are more extensive in this paper and provide comparisons with an algorithm that are currently in use in a real-world charging station. 
+
+We highlighted both of the revisions in the revised manuscript and also addressed several other comments that are proposed by the reviewers. 
 
 
 
@@ -116,9 +121,9 @@ In what follows, we mention first the comments (as appeared in the decision lett
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-Our earlier work presents algorithms for only fractional revenue model. Current manuscript, which can be considered as journal extension of the previous work, studies both fractional and integral models. Although the presented algorithms in the conference version provide a competitive ratio of $2-1/U$ (with $U$ as "scarcity level"), the proof holds when all EVs have the same maximum charging rate. In the current study, we consider hetregenousity in this parameter and prove the online algorithm is 2-competitive.
+Our earlier work presents algorithms for only fractional revenue model. Current manuscript, which can be considered as journal extension of the previous work, studies both fractional and integral models. Although the presented algorithms in the conference version provide a competitive ratio of $2-1/U$ (with $U$ as "scarcity level"), the proof holds when all EVs have the same maximum charging rate. In the current study, we consider heterogeneity in this parameter and prove the online algorithm is 2-competitive.
 
-To clarify this, we added an explanation in Section ...   
+\textit{To clarify this, we added an explanation in Section ...   @Bahram: please add a subsection in Related work and explain IWQoS and other theoretical papers. This is the most important task for this revision. }
 
 \vspace{3mm}
 {\color{blue} Furthermore, why is there no inclusion of electricity prices and/or value for demand response, which is a particular powerful use case for EV charging scheduling? More generally speaking, please add a proper motivation of the two models: when would we use which model in practice? }
@@ -133,8 +138,7 @@ The variable $v_i$ defined in the paper is valuation of EV $i$ when it receives 
 {\color{blue} The approach for the integral model seems novel to me, and it is nice that a theoretical analysis is included. However, the theoretical results are disappointing, which reduces their value a bit: they only hold under severe restrictions: Thm.4 only holds "when EVs have same arrival time" ... which is quite unrealistic. Thm.5 only holds for m=1, which is the single constraint often found in literature. (Of which the authors write: [our] "problem is different from EV charging scheduling with capacity constraint in single station scenarios [2], [4], [7]–[12]".). Moreover, the ratios are pretty weak (for Thm.4: number of charging stations +1 times the optimal, for Thm.5: number of different arrival slots + 1 times the optimal). }
 \vspace{3mm}
 
-$\vartriangleright$ \noindent\textbf{Response:} 
-...
+$\vartriangleright$ \noindent\textbf{Response:} We note that the underlying problem in the integral model is an NP-hard problem, which makes it challenging to design a good approximation algorithm even for the offline version of the problem. Hence, designing online algorithms for the integral setting is fundamentally more challenging than the fractional case. Our work is among the first few works in the direction of developing competitive online algorithms for combinatorial optimization problems. While we admit that there are some assumptions for the theoretical analysis, we further highlight that the algorithms work effectively in practice as demonstrated in real-world trace-driven experiments, for the general cases without those assumptions. Furthermore, the theoretical analysis of underlying mathematical problems in the general setting are extremely challenging problems in the theoretical computer science literature, in particular, job scheduling problems. To the best of our knowledge, there is no deep theoretical understanding of online algorithms for the general setting of this problem. Note that ICS works for multiple station, which is different from the existing work, however, the analysis in Theorem 5, restricts the analysis of this general multiple station to one station. Last, the result in Theorem 4, is the best known competitive result for this setting, and considering the complexity of the online combinatorial problem, it would be a very challenging task to improve this result. 
 
 \vspace{3mm}
 {\color{blue} Actual useful proof of the quality of the proposed algorithm can be found in the experiments. I think the paper could be interesting if this section received significantly more attention, for example
@@ -144,25 +148,27 @@ $\vartriangleright$ \noindent\textbf{Response:}
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-{\color{red}@Mohammad: We should try to distinguish our work from Yao et al. but it seems difficult.}
+The current experiments (i) shows the effect of problem parameters, including the number of charging stations and number of vehicles (in Figure 2), and the impact of peak constraint and demand (in directly) (in Figure 3). The impact of arrival and departure times could be interpreted as more/less flexibility in charging scheduling. Our result in Figure 3, indeed, investigates the impact of flexibility in charging scheduling. 
+
+
+Our work is substantially different from Yao et al. (2017), since the authors consider an offline scenario for managing EV charging scheduling. The proposed algorithm in their work is an offline algorithm based on convex relaxation of the underlying combinatorial problem. They assume that all the required information for decision making is available in advance. Our work, in contrast, tackle another version of EV charging scheduling with global peak constraints. \textit{The significance of our work is to consider the online setting in which the input to the problem arrives over time, and develop algorithms that are provably efficient against this uncertainty of the system.} As for comparison, we compared our results with the offline optimal solution (that is equivalent to the optimal solution of the problem studied in Yao's paper without demand-response constraints). In the results reported in Figure 3, we have reported the results of offline optimal as \textsc{iOPT}. 
+
 
 \vspace{3mm}
 {\color{blue} The implementation of the algorithms and the benchmark problems would be helpful if submitted as supplementary files. }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-We listed pseudo-codes for all proposed algorithms and an interested reader can easily convert them to real implementation code. We believe that detailed implementation of the algorithms has no added value as the goal here is to provide algorithms and analysis and not focusing on programming challenges.
-
-{\color{red} @Mohammad: I have an implementation for WFAIR algorithm which almost similar to FOCS in this paper. I can update it and add FOCS implementation as well. 
-Then we can refer to it as a sample implementation for our algorithms. The algorithm code is 
-here: https://github.com/bahramalinia/EV-Scheduling.git}
+We listed pseudo-codes for all proposed algorithms (Algorithm 1-7) in the main body of the paper. Despite the technical challenges in the analysis, the main body of the algorithms are fairly simple and an interested reader can easily convert them to real implementation code. Last, we have provided some sample code implementations of our algorithms in 
+%We believe that detailed implementation of the algorithms has no added value as the goal here is to provide algorithms and analysis and not focusing on programming challenges.
+here: https://github.com/bahramalinia/EV-Scheduling.git
   
 \vspace{3mm}
 {\color{blue} On page 2 and page 7 you write that "the underlying problem is NP-hard due to 0/1 selection" and you mention knapsack, but in fact knapsack is one of the easier NP-hard problems. It seems that your integral model models a strongly NP-hard problem, see De Weerdt et al. (2018). }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-Thanks for the point. We agree that our problem is strongly NP-Hard and we corrected the related phrases in the manuscript.
+Thanks for the point. We agree that our problem is strongly NP-Hard and we corrected the related phrases in the manuscript. Please see Page ?? of the revised manuscript. 
 
 \vspace{3mm}
 {\color{blue} On page 4, l19, the constraint (1d) seems to force equal charging speed from the arrival time to the departure time. I don't think this constraint is met by the greedy algorithms, is it? Then this is not your "Scheduling Problem for Adaptive charging Network (SPAN) under fractional revenue model"? }
@@ -269,48 +275,50 @@ doi: 10.1109/IWQoS.2018.8624184
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
+Thanks for suggesting the related works. In the revised version we added all of them as well as several more recent papers, that are highlighted in blue. 
+
 {\color{red} I should check these papers and add to Related Work if needed.}
 
 \vspace{3mm}
-{\color{blue} The authors claim that if prediction or modeling techniques were used, the performance of the proposed algorithms would deteriorate. However, they do not present any results to support their claim.  }
+{\color{blue} 2. The authors claim that if prediction or modeling techniques were used, the performance of the proposed algorithms would deteriorate. However, they do not present any results to support their claim.  }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-{\color{red}: This refers to : "The prediction-based approaches achieve satisfactory
-performance for the scenarios that follow prediction. Deviation
-from prediction models, however, degrades their performance.
-Our approach, on the other hand, has no assumptions on
-modeling/prediction, and in this way, is robust against any
-uncertainty in the instances to the problem."}
+This refers to the following statement in the Related Work: "The prediction-based approaches achieve satisfactory performance for the scenarios that follow prediction. Deviation from prediction models, however, degrades their performance.
+Our approach, on the other hand, has no assumptions on modeling/prediction, and in this way, is robust against any uncertainty in the instances to the problem." 
+
+The above statement provides a high-level difference between prediction-based approaches and our competitive online algorithm design approach. Since our approach does not rely on any predicted future information, we are robust against any type of uncertain input to the problem. In contrast, the developed algorithms in prediction-based approaches rely on the quality of prediction, and if the quality of prediction is weak, their performance also degrades. An interesting future direction of our work, based on this comment, is to extend our \textit{pure} online algorithms with a limited predicted future values. In this way, not only the algorithms are robust against uncertainty, their performance in practice can be improved with some future data. 
 
 \vspace{3mm}
-{\color{blue} An interesting extension would be to let users define a set of CSs to charge and let the scheduling algorithms take the final decision of the CS to charge. In this way, the flexibility of the algorithms would increase and the load across the CSs could be better managed. However, the downside would be that the complexity of the algorithms would increase. }
+{\color{blue} 3. An interesting extension would be to let users define a set of CSs to charge and let the scheduling algorithms take the final decision of the CS to charge. In this way, the flexibility of the algorithms would increase and the load across the CSs could be better managed. However, the downside would be that the complexity of the algorithms would increase. }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-Although this can be an interesting extension, we assumed that in a real scenario, a user chooses only one CS to ask for its demand and may drive to another CS if its demand is not fulfilled. 
+Although this can be an interesting extension, in this version, we assumed that a user chooses only one CS to ask for its demand and may drive to another CS if its demand is not fulfilled. We admit that this suggestion is a very elegant extension from the perspective of theoretical problem formulation and algorithm design, and makes the scenario more challenging. In addition, this suggestion makes more sense in scenarios in which EVs are heterogeneous and a subset of chargers can satisfy a subset of EVs. We do believe that this is an very interesting scenario to consider, however, as mentioned by the reviewer, it increases the complexity of designing and analysis of the algorithms, and is beyond the scope of this submission. 
 
 \vspace{3mm}
-{\color{blue} Is truth telling regarding the EVs’ valuations guaranteed? Is it possible for the EVs to cooperate and report lower valuations? It is not clear in the paper. If not, this could come in contrast with the revenue maximization objective function. Moreover, this would cause serious implications in the online algorithms which use the valuations to select the EVs to charge.     }
+{\color{blue} Is truth telling regarding the EVs’ valuations guaranteed? Is it possible for the EVs to cooperate and report lower valuations? It is not clear in the paper. If not, this could come in contrast with the revenue maximization objective function. Moreover, this would cause serious implications in the online algorithms which use the valuations to select the EVs to charge.}
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
 This is an important and interesting point raised by the reviewer. Although we did not study the case for self interested users in this paper, we addressed it in our recent work: 
 
-B. Alinia, M. H. Hajiesmaili, and N. Crespi, "Online EV Charging Scheduling with On-Arrival Commitment", IEEE Trans. on Int. Trans. Systems, 2019.
+B. Alinia, M. H. Hajiesmaili, and N. Crespi, "Online EV Charging Scheduling with On-Arrival Commitment", \textit{IEEE Trans. on Int. Transportation Systems (ITS)}, 2019.
 
-In the above cited paper, we propose "SCOMMIT" algorithm where its core allocation idea is based on users' unit-values except that it also provides on-arrival commitment. Since it is proved that SCOMMIT is truthful, we believe that among the proposed algorithms in current manuscript, the FOCS is truthful.
+In the above cited paper, we propose "SCOMMIT" algorithm where its core allocation idea is based on users' unit-values except that it also provides on-arrival commitment. Since it is proved that SCOMMIT is truthful, we believe that among the proposed algorithms in current manuscript, the FOCS is truthful. In the above paper, also, we tackled another desirable property to commit EVs on their arrival on how much they can get charged during their available window. 
 
-{\color{red} If verified, need to add something in the paper to highlight this}
+The focus of this paper, in on more comprehensive online algorithm design for fractional and integral revenue models, and for our ITS paper, we focused on truthfulness and on-arrival commitment. It is worth noting that developing solutions that provide competitiveness against offline optimal versus those that provide truthfulness and on-arrival commitment, needs different algorithmic techniques and tools. As a notable result, an interesting theoretical observation in our ITS shows that there is no online algorithms that can simultaneously provide on-arrival commitment and bounded competitive ratio. See Section 6 and Theorem 5 of our ITS paper for more details. 
 
 \vspace{3mm}
-{\color{blue} The length of each time point is set to 1 hour. This is too long, and the accuracy of the algorithms is reduced. Moreover, the online algorithm is not really online, as it schedules EVs every hour. }
+{\color{blue} 5. The length of each time point is set to 1 hour. This is too long, and the accuracy of the algorithms is reduced. Moreover, the online algorithm is not really online, as it schedules EVs every hour. }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-The length of the time slot can be arbitrary set in the algorithms. The derived complexities of the algorithms in the paper include parameter $T$ as number of time slots in a day (please see Table xx in the manuscript). In large scale scenarios, the effect of increasing $T$ would be negligible in performance of the algorithms as long as it $T/N$ is a constant ($N$ is number of EVs). Therefore, when $N$ grows large and $T$ is a constant, $T$ can be removed from the complexities in the Table xx. 
+The length of the time slot can be arbitrary set in the algorithms and we used 1 hour in experiments since the availability window of our traces was in one hour slots. With more fine grained data, it would be possible to run the algorithms in faster timescales, e.g., 5 minutes or so. 
 
-Another point is that in real electricity market prices are only allowed to be changed hourly which is the reason most power scheduling algorithms work with one-hour slots.
+We note that the derived complexities of the algorithms in the paper include parameter $T$ as number of time slots in a day (please see Table II in the manuscript). In large scale scenarios, the effect of increasing $T$ would be negligible in performance of the algorithms as long as it $T/N$ is a constant ($N$ is number of EVs). Therefore, when $N$ grows large and $T$ is a constant, $T$ can be removed from the complexities in the Table II. 
+
+%Another point is that in real electricity market prices are only allowed to be changed hourly which is the reason most power scheduling algorithms work with one-hour slots.
 
 \vspace{3mm}
 {\color{blue} Some results on execution times and scalability of the proposed algorithms must be added.
@@ -318,7 +326,7 @@ Another point is that in real electricity market prices are only allowed to be c
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-TBD
+The complexity of the algorithms are low and we just set the charging rate by a simple sorting on arrival of each EV. \textbf{Bahram, please confirm.}
 
 %\bibliography{ref-response}{}
 %\vspace{-3mm}
