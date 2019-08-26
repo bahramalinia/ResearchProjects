@@ -41,16 +41,30 @@
 \citation{jin2017optimal}
 \citation{wang2017predictive,chen2014distributional}
 \citation{Alinia2018ITS}
+\citation{jain2015near}
+\citation{yao2016real}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}\protected@file@percent }
 \newlabel{sec:rel}{{II}{2}}
 \newlabel{sec:rel:peakconstrained}{{\unhbox \voidb@x \hbox {II-}1}{2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-}1}Peak-Constrained EV Charging Scheduling}{2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-}2}Scheduling Under Demand Uncertainty}{2}\protected@file@percent }
+\newlabel{sec:rel:comp}{{\unhbox \voidb@x \hbox {II-}3}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-}3}Worst case analysis in EV scheduling}{2}\protected@file@percent }
+\citation{alinia2018competitive}
+\citation{alinia2018competitive}
+\citation{alinia2018competitive}
+\citation{firstfit}
+\citation{zheng2016online,deng2016whether}
+\citation{de2018complexity}
+\citation{lucier2013efficient}
 \citation{lee2016adaptive}
 \citation{lee2016adaptive}
 \citation{lee2016adaptive}
-\citation{Xiang}
-\citation{WTang,Shroff2014}
+\@writefile{toc}{\contentsline {section}{\numberline {III}System Model and Problem Formulation}{3}\protected@file@percent }
+\newlabel{sec:model}{{III}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}System Model}{3}\protected@file@percent }
+\newlabel{sec:acn}{{\unhbox \voidb@x \hbox {III-A}1}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}1}Charging Network}{3}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:model-a}{{1a}{3}}
 \newlabel{sub@fig:model-a}{{a}{3}}
@@ -58,25 +72,20 @@
 \newlabel{sub@fig:model-b}{{b}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System model \cite  {lee2016adaptive}.\relax }}{3}\protected@file@percent }
 \newlabel{fig:slackness1}{{1}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}System Model and Problem Formulation}{3}\protected@file@percent }
-\newlabel{sec:model}{{III}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}System Model}{3}\protected@file@percent }
-\newlabel{sec:acn}{{\unhbox \voidb@x \hbox {III-A}1}{3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}1}Charging Network}{3}\protected@file@percent }
-\newlabel{sec:ev}{{\unhbox \voidb@x \hbox {III-A}2}{3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}2}EVs}{3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Summary of key notations\relax }}{3}\protected@file@percent }
 \newlabel{tbl:not}{{I}{3}}
-\newlabel{sec:irm}{{\unhbox \voidb@x \hbox {III-A}3}{3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}3}Revenue Models}{3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Problem Formulation}{3}\protected@file@percent }
-\newlabel{sec:problem}{{\unhbox \voidb@x \hbox {III-B}}{3}}
+\newlabel{sec:ev}{{\unhbox \voidb@x \hbox {III-A}2}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}2}EVs}{3}\protected@file@percent }
+\citation{Xiang}
+\citation{WTang,Shroff2014}
 \citation{Carr}
 \citation{Jain}
 \citation{Jain}
 \citation{Jain}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Proposed algorithms and their properties.\relax }}{4}\protected@file@percent }
-\newlabel{tbl:algs}{{II}{4}}
+\newlabel{sec:irm}{{\unhbox \voidb@x \hbox {III-A}3}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}3}Revenue Models}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Problem Formulation}{4}\protected@file@percent }
+\newlabel{sec:problem}{{\unhbox \voidb@x \hbox {III-B}}{4}}
 \newlabel{Pobjec}{{1a}{4}}
 \newlabel{ConstPartial}{{1a}{4}}
 \newlabel{ConstTotal}{{1b}{4}}
@@ -88,58 +97,66 @@
 \newlabel{Eq:partial_value}{{2}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Optimal Offline Design}{4}\protected@file@percent }
 \newlabel{sec:fopt}{{\unhbox \voidb@x \hbox {IV-A}}{4}}
-\newlabel{sec:ph1}{{\unhbox \voidb@x \hbox {IV-A}1}{4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}1}Phase I-Reservation}{4}\protected@file@percent }
-\newlabel{eq:ri}{{3}{4}}
-\newlabel{thm:R_feasible}{{1}{4}}
-\citation{borodin2005online}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Proposed algorithms and their properties.\relax }}{5}\protected@file@percent }
+\newlabel{tbl:algs}{{II}{5}}
+\newlabel{sec:ph1}{{\unhbox \voidb@x \hbox {IV-A}1}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}1}Phase I-Reservation}{5}\protected@file@percent }
+\newlabel{eq:ri}{{3}{5}}
+\newlabel{thm:R_feasible}{{1}{5}}
+\newlabel{thm:R_star}{{2}{5}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces \textsc  {fCS}\xspace  \relax }}{5}\protected@file@percent }
 \newlabel{alg:optimal-off}{{1}{5}}
 \newlabel{algline:sort1}{{1}{5}}
 \newlabel{algline:setR}{{5}{5}}
 \newlabel{algline:seta}{{7}{5}}
 \newlabel{algline:fcsallocate}{{16}{5}}
-\newlabel{thm:R_star}{{2}{5}}
 \newlabel{sec:ph2}{{\unhbox \voidb@x \hbox {IV-A}2}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}2}Phase II- Allocation}{5}\protected@file@percent }
 \newlabel{cor:1}{{1}{5}}
-\newlabel{thm:complexity}{{2}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Online Scenario}{5}\protected@file@percent }
-\newlabel{sec:fonline}{{\unhbox \voidb@x \hbox {IV-B}}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces \textsc  {foCS}\xspace  : $\forall t\in \{1,2,\dots  ,T\}$\relax }}{5}\protected@file@percent }
-\newlabel{alg:focs}{{2}{5}}
-\newlabel{algline:sort}{{2}{5}}
-\newlabel{algline:focsfor}{{3}{5}}
-\newlabel{algline:focssety}{{4}{5}}
+\citation{borodin2005online}
 \citation{firstfit}
 \citation{firstfit}
 \citation{firstfit}
-\citation{approx}
-\citation{Jain}
-\citation{Jain}
+\newlabel{thm:complexity}{{2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Online Scenario}{6}\protected@file@percent }
+\newlabel{sec:fonline}{{\unhbox \voidb@x \hbox {IV-B}}{6}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces \textsc  {foCS}\xspace  : $\forall t\in \{1,2,\dots  ,T\}$\relax }}{6}\protected@file@percent }
+\newlabel{alg:focs}{{2}{6}}
+\newlabel{algline:sort}{{2}{6}}
+\newlabel{algline:focsfor}{{3}{6}}
+\newlabel{algline:focssety}{{4}{6}}
 \newlabel{eq:delta}{{4}{6}}
 \newlabel{lBj0}{{5}{6}}
 \newlabel{eq:optdist}{{6}{6}}
 \newlabel{eq:lg}{{7}{6}}
 \newlabel{eq:ALG}{{8}{6}}
 \newlabel{thm:focscompetitive}{{3}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Integral Revenue Model}{6}\protected@file@percent }
-\newlabel{sec:integral}{{V}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Offline Scenario}{6}\protected@file@percent }
-\newlabel{subsec:icsalgorithm}{{\unhbox \voidb@x \hbox {V-A}}{6}}
-\newlabel{ConstDcover}{{9a}{6}}
+\citation{approx}
+\citation{Jain}
+\citation{Jain}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Integral Revenue Model}{7}\protected@file@percent }
+\newlabel{sec:integral}{{V}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Offline Scenario}{7}\protected@file@percent }
+\newlabel{subsec:icsalgorithm}{{\unhbox \voidb@x \hbox {V-A}}{7}}
+\newlabel{ConstDcover}{{9a}{7}}
 \newlabel{sec:icsexplanation}{{\unhbox \voidb@x \hbox {V-A}1}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}1}Explanation of the Main Algorithm}{7}\protected@file@percent }
 \@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces \textsc  {iCS}\xspace  \relax }}{7}\protected@file@percent }
 \newlabel{alg:ics}{{3}{7}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces \textsc  {SmartAllocate}($i,D_i$)\relax }}{7}\protected@file@percent }
-\newlabel{SmartAllocate}{{4}{7}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces \textsc  {BetaCover}($i$)\relax }}{7}\protected@file@percent }
-\newlabel{alg:betacover}{{5}{7}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces \textsc  {ReConsider}($i$)\relax }}{7}\protected@file@percent }
-\newlabel{Replace}{{6}{7}}
-\newlabel{subsec:analysis}{{\unhbox \voidb@x \hbox {V-A}2}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}2}Analysis}{7}\protected@file@percent }
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces \textsc  {SmartAllocate}($i,D_i$)\relax }}{8}\protected@file@percent }
+\newlabel{SmartAllocate}{{4}{8}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces \textsc  {BetaCover}($i$)\relax }}{8}\protected@file@percent }
+\newlabel{alg:betacover}{{5}{8}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces \textsc  {ReConsider}($i$)\relax }}{8}\protected@file@percent }
+\newlabel{Replace}{{6}{8}}
+\newlabel{subsec:analysis}{{\unhbox \voidb@x \hbox {V-A}2}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}2}Analysis}{8}\protected@file@percent }
+\newlabel{thm:approx}{{4}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Online Scenario}{8}\protected@file@percent }
+\newlabel{sec:onlineint}{{\unhbox \voidb@x \hbox {V-B}}{8}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {7}{\ignorespaces \textsc  {ioCS}\xspace  : $\forall t\in \{1,2,\dots  ,T\}$\relax }}{8}\protected@file@percent }
+\newlabel{alg:iocs}{{7}{8}}
+\newlabel{thm:iocscompetitive}{{5}{8}}
 \citation{Santos,Tang}
 \citation{kWhcost}
 \citation{lee2016adaptive}
@@ -147,33 +164,11 @@
 \citation{lee2016adaptive}
 \citation{lee2016adaptive}
 \citation{Jain}
-\newlabel{thm:approx}{{4}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Online Scenario}{8}\protected@file@percent }
-\newlabel{sec:onlineint}{{\unhbox \voidb@x \hbox {V-B}}{8}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {7}{\ignorespaces \textsc  {ioCS}\xspace  : $\forall t\in \{1,2,\dots  ,T\}$\relax }}{8}\protected@file@percent }
-\newlabel{alg:iocs}{{7}{8}}
-\newlabel{thm:iocscompetitive}{{5}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Simulation Results}{8}\protected@file@percent }
-\newlabel{sec:simul}{{VI}{8}}
 \citation{Jain}
-\newlabel{fig:V-N-M2}{{2a}{9}}
-\newlabel{sub@fig:V-N-M2}{{a}{9}}
-\newlabel{fig:V-N-M4}{{2b}{9}}
-\newlabel{sub@fig:V-N-M4}{{b}{9}}
-\newlabel{fig:V-N-M8}{{2c}{9}}
-\newlabel{sub@fig:V-N-M8}{{c}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces {\color  {black}Comparison results for $2$, $4$, and $8$ CSs for fractional and integral revenue models.}\relax }}{9}\protected@file@percent }
-\newlabel{fig:V-N-M}{{2}{9}}
-\newlabel{fig:v-c}{{3a}{9}}
-\newlabel{sub@fig:v-c}{{a}{9}}
-\newlabel{fig:p-c}{{3b}{9}}
-\newlabel{sub@fig:p-c}{{b}{9}}
-\newlabel{fig:acc-c}{{3c}{9}}
-\newlabel{sub@fig:acc-c}{{c}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces {\color  {black}Comparison in terms of total revenue, actual peak, and percentage of fully charged EVs by varying local peak value}.\relax }}{9}\protected@file@percent }
-\newlabel{fig:peak_local}{{3}{9}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces {\color  {black}EV models and their battery capacity.}\relax }}{9}\protected@file@percent }
 \newlabel{tb:models}{{III}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Simulation Results}{9}\protected@file@percent }
+\newlabel{sec:simul}{{VI}{9}}
 \@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Acronyms for the algorithms\relax }}{9}\protected@file@percent }
 \newlabel{tb:comparisons}{{IV}{9}}
 \bibdata{ref}
@@ -194,6 +189,25 @@
 \bibcite{borodin2005online}{15}
 \bibcite{approx}{16}
 \bibcite{Carr}{17}
+\newlabel{fig:V-N-M2}{{2a}{10}}
+\newlabel{sub@fig:V-N-M2}{{a}{10}}
+\newlabel{fig:V-N-M4}{{2b}{10}}
+\newlabel{sub@fig:V-N-M4}{{b}{10}}
+\newlabel{fig:V-N-M8}{{2c}{10}}
+\newlabel{sub@fig:V-N-M8}{{c}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces {\color  {black}Comparison results for $2$, $4$, and $8$ CSs for fractional and integral revenue models.}\relax }}{10}\protected@file@percent }
+\newlabel{fig:V-N-M}{{2}{10}}
+\newlabel{fig:v-c}{{3a}{10}}
+\newlabel{sub@fig:v-c}{{a}{10}}
+\newlabel{fig:p-c}{{3b}{10}}
+\newlabel{sub@fig:p-c}{{b}{10}}
+\newlabel{fig:acc-c}{{3c}{10}}
+\newlabel{sub@fig:acc-c}{{c}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces {\color  {black}Comparison in terms of total revenue, actual peak, and percentage of fully charged EVs by varying local peak value}.\relax }}{10}\protected@file@percent }
+\newlabel{fig:peak_local}{{3}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{10}\protected@file@percent }
+\newlabel{sec:conclusion}{{VII}{10}}
+\@writefile{toc}{\contentsline {section}{References}{10}\protected@file@percent }
 \bibcite{mukherjee2017distributed}{18}
 \bibcite{de2017impact}{19}
 \bibcite{shafie2018innovative}{20}
@@ -214,32 +228,36 @@
 \bibcite{Santos}{35}
 \bibcite{kWhcost}{36}
 \bibcite{optimization2013gurobi}{37}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{10}\protected@file@percent }
-\newlabel{sec:conclusion}{{VII}{10}}
-\@writefile{toc}{\contentsline {section}{References}{10}\protected@file@percent }
+\bibcite{jain2015near}{38}
+\bibcite{yao2016real}{39}
+\bibcite{alinia2018competitive}{40}
+\bibcite{zheng2016online}{41}
+\bibcite{de2018complexity}{42}
+\bibcite{deng2016whether}{43}
+\bibcite{lucier2013efficient}{44}
 \bibstyle{ieeetr}
 \citation{approx}
-\citation{Jain}
 \@writefile{toc}{\contentsline {section}{Appendix}{11}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Details of the \textsc  {ReConsider}($i$)}{11}\protected@file@percent }
 \newlabel{sec:rc}{{A}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Proof of Lemma\nobreakspace  {}1\hbox {}}{11}\protected@file@percent }
 \newlabel{app:2}{{B}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C}Proof of Lemma\nobreakspace  {}2\hbox {}}{11}\protected@file@percent }
-\newlabel{app:3}{{C}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D}Proof of Theorem\nobreakspace  {}3\hbox {}}{11}\protected@file@percent }
-\newlabel{app:focscompetitive}{{D}{11}}
-\newlabel{eq:compsingle}{{10}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E}Proof of Theorem\nobreakspace  {}4\hbox {}}{11}\protected@file@percent }
-\newlabel{app:1}{{E}{11}}
-\newlabel{EqCharge}{{11}{11}}
-\newlabel{EqBound}{{12}{11}}
+\citation{Jain}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Proof of Lemma\nobreakspace  {}2\hbox {}}{12}\protected@file@percent }
+\newlabel{app:3}{{C}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Proof of Theorem\nobreakspace  {}3\hbox {}}{12}\protected@file@percent }
+\newlabel{app:focscompetitive}{{D}{12}}
+\newlabel{eq:compsingle}{{10}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Proof of Theorem\nobreakspace  {}4\hbox {}}{12}\protected@file@percent }
+\newlabel{app:1}{{E}{12}}
+\newlabel{EqCharge}{{11}{12}}
+\newlabel{EqBound}{{12}{12}}
 \newlabel{EqMS}{{13}{12}}
 \newlabel{Eqabf}{{14}{12}}
 \newlabel{Eq:bound}{{16}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {F}Proof of Theorem\nobreakspace  {}5\hbox {}}{12}\protected@file@percent }
 \newlabel{app:iocscompetitive}{{F}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {G}Proof of Theorem\nobreakspace  {}1\hbox {}}{12}\protected@file@percent }
-\newlabel{app:4}{{G}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {H}Proof of Theorem\nobreakspace  {}2\hbox {}}{12}\protected@file@percent }
-\newlabel{app:5}{{H}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {G}Proof of Theorem\nobreakspace  {}1\hbox {}}{13}\protected@file@percent }
+\newlabel{app:4}{{G}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {H}Proof of Theorem\nobreakspace  {}2\hbox {}}{13}\protected@file@percent }
+\newlabel{app:5}{{H}{13}}

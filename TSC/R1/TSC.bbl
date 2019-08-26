@@ -178,4 +178,36 @@ A.~Santos, N.~McGuckin, H.~Y. Nakamoto, D.~Gray, and S.~Liss, ``Summary of
 \bibitem{optimization2013gurobi}
 ``Gurobi optimizer 5.0,'' {\em Gurobi: http://www.gurobi.com}, 2013.
 
+\bibitem{jain2015near}
+N. Jain, I. Menache, J. Seffi, and J. Yaniv, ``Near-optimal scheduling mechanisms for deadline-sensitive jobs in large computing clusters'', 
+{\em ACM Transactions on Parallel Computing}, vol. 2, no. 1, pp. 3:1--3:29, 2015.
+
+\bibitem{yao2016real}
+L. Yao, W. H. Lim, T. S. Tsai, ``A real-time charging scheme for demand response in electric vehicle parking station'',
+{\em IEEE Transactions on Smart Grid}, vol. 8, no. 1, pp. 52-62, 2016. 
+
+\bibitem{alinia2018competitive}
+B. Alinia, M. S. Talebi, M. H. Hajiesmaili, A. Yekkehkhany, and N. Crespi, 
+``Competitive online scheduling algorithms with applications in deadline-constrained EV charging'',
+{\em IEEE/ACM 26th International Symposium on Quality of Service (IWQoS)}, 2018.
+
+\bibitem{zheng2016online}
+Z. Zheng, and N. B. Shroff, ``Online multi-resource allocation for deadline sensitive jobs with partial values in the cloud'',
+{\em IEEE INFOCOM}, 2016.
+
+
+\bibitem{de2018complexity}
+M. de Weerdt, M. Albert, V. Conitzer, and K. Linden, 
+``Complexity of scheduling charging in the smart grid'',
+{\em Proceedings of the 17th International Conference on Autonomous Agents and MultiAgent Systems}, 2018.
+
+\bibitem{deng2016whether}
+R. Deng, and H. Liang, ``Whether to charge an electric vehicle or not? \textsc{A} near-optimal online approach'',
+{\em IEEE PESGM}, 2016.
+
+\bibitem{lucier2013efficient}
+B. Lucier, I. Menache, J. S. Naor, and J. Yaniv, 
+``Efficient online scheduling for deadline-sensitive jobs'',
+{\em ACM SPAA}, 2013.
+
 \end{thebibliography}

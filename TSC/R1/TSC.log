@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.24)  25 AUG 2019 13:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.24)  27 AUG 2019 00:18
 entering extended mode
 **./TSC.tex
 (TSC.tex
@@ -487,64 +487,67 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{C:/Users/balinia/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
+] [2]
 <fig/model-a.pdf, id=22, 358.44615pt x 262.47961pt>
 File: fig/model-a.pdf Graphic file (type pdf)
 <use fig/model-a.pdf>
-Package pdftex.def Info: fig/model-a.pdf  used on input line 282.
+Package pdftex.def Info: fig/model-a.pdf  used on input line 300.
 (pdftex.def)             Requested size: 174.46216pt x 127.75502pt.
 <fig/model-b.pdf, id=23, 127.22531pt x 192.78023pt>
 File: fig/model-b.pdf Graphic file (type pdf)
 <use fig/model-b.pdf>
-Package pdftex.def Info: fig/model-b.pdf  used on input line 289.
+Package pdftex.def Info: fig/model-b.pdf  used on input line 307.
 (pdftex.def)             Requested size: 73.32272pt x 111.10661pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--290
+Underfull \hbox (badness 10000) in paragraph at lines 308--308
 []\OT1/ptm/m/n/8 (b) |Com-mu-ni-ca-tion
  []
 
 
-Overfull \hbox (0.84283pt too wide) in paragraph at lines 279--297
+Overfull \hbox (0.84283pt too wide) in paragraph at lines 297--315
  []$[]$ 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 375.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1phv.fd"
-File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
-) [3 <./fig/model-a.pdf> <./fig/model-b.pdf
+[3 <./fig/model-a.pdf> <./fig/model-b.pdf
 
 pdfTeX warning: pdflatex (file ./fig/model-b.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
 >]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 552.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 393.
 
- ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1phv.fd"
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+) [4]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 570.
+
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 552.
- [4]
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 570.
+
+Underfull \vbox (badness 2875) has occurred while \output is active []
+
+ [5]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5.55556> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 578.
- [5] [6]
-Underfull \hbox (badness 5696) in paragraph at lines 686--694
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 596.
+
+[6]
+Underfull \hbox (badness 5696) in paragraph at lines 704--712
 []\OT1/ptm/m/n/10 In \OT1/ptm/m/sc/10 Smar-tAl-lo-cate\OT1/ptm/m/n/10 , let us 
 de-fine $\OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; h\OT1/cmr/m/n/1
 0 (\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 )) =
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 686--694
+Underfull \hbox (badness 4144) in paragraph at lines 704--712
 [][] \OML/cmm/m/it/10 y[]$ \OT1/ptm/m/n/10 as to-tal work-load at time slot $\O
 ML/cmm/m/it/10 t$ \OT1/ptm/m/n/10 in
  []
 
 
-Underfull \hbox (badness 7203) in paragraph at lines 686--694
+Underfull \hbox (badness 7203) in paragraph at lines 704--712
 \OT1/ptm/m/n/10 CS $\OML/cmm/m/it/10 h\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 i\OT1/c
 mr/m/n/10 )$ \OT1/ptm/m/n/10 and $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; h\OT1/
 cmr/m/n/10 (\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ))$ \OT1/ptm/m/n/10 as to-tal ava
@@ -552,59 +555,56 @@ il-able load to
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 686--694
+Underfull \hbox (badness 1931) in paragraph at lines 704--712
 \OT1/ptm/m/n/10 al-lo-cate at time slot $\OML/cmm/m/it/10 t$ \OT1/ptm/m/n/10 fo
 r CS $\OML/cmm/m/it/10 h\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 )$\O
 T1/ptm/m/n/10 . We al-ways have
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 686--694
+Underfull \hbox (badness 10000) in paragraph at lines 704--712
 []$\OT1/ptm/m/n/10 . For schedul-ing,
  []
 
-[7] Excluding 'comment' comment.
-<fig/V-N-M2.pdf, id=171, 489.19101pt x 368.80385pt>
+[7] Excluding 'comment' comment. [8]
+<fig/V-N-M2.pdf, id=175, 489.19101pt x 368.80385pt>
 File: fig/V-N-M2.pdf Graphic file (type pdf)
 <use fig/V-N-M2.pdf>
-Package pdftex.def Info: fig/V-N-M2.pdf  used on input line 965.
+Package pdftex.def Info: fig/V-N-M2.pdf  used on input line 983.
 (pdftex.def)             Requested size: 129.0pt x 97.25421pt.
-<fig/V-N-M4.pdf, id=172, 492.34792pt x 366.27141pt>
+<fig/V-N-M4.pdf, id=176, 492.34792pt x 366.27141pt>
 File: fig/V-N-M4.pdf Graphic file (type pdf)
 <use fig/V-N-M4.pdf>
-Package pdftex.def Info: fig/V-N-M4.pdf  used on input line 972.
+Package pdftex.def Info: fig/V-N-M4.pdf  used on input line 990.
 (pdftex.def)             Requested size: 129.0pt x 95.96603pt.
-<fig/V-N-M8.pdf, id=173, 491.87616pt x 365.14218pt>
+<fig/V-N-M8.pdf, id=177, 491.87616pt x 365.14218pt>
 File: fig/V-N-M8.pdf Graphic file (type pdf)
 <use fig/V-N-M8.pdf>
-Package pdftex.def Info: fig/V-N-M8.pdf  used on input line 979.
+Package pdftex.def Info: fig/V-N-M8.pdf  used on input line 997.
 (pdftex.def)             Requested size: 129.0pt x 95.7649pt.
-<fig/v-c.pdf, id=174, 399.29173pt x 307.1475pt>
+<fig/v-c.pdf, id=178, 399.29173pt x 307.1475pt>
 File: fig/v-c.pdf Graphic file (type pdf)
 <use fig/v-c.pdf>
-Package pdftex.def Info: fig/v-c.pdf  used on input line 1059.
+Package pdftex.def Info: fig/v-c.pdf  used on input line 1077.
 (pdftex.def)             Requested size: 129.0pt x 99.23123pt.
-<fig/p-c.pdf, id=175, 411.939pt x 307.1475pt>
+<fig/p-c.pdf, id=179, 411.939pt x 307.1475pt>
 File: fig/p-c.pdf Graphic file (type pdf)
 <use fig/p-c.pdf>
-Package pdftex.def Info: fig/p-c.pdf  used on input line 1067.
+Package pdftex.def Info: fig/p-c.pdf  used on input line 1085.
 (pdftex.def)             Requested size: 129.0pt x 96.18019pt.
-<fig/acc-c.pdf, id=176, 397.485pt x 307.1475pt>
+<fig/acc-c.pdf, id=180, 397.485pt x 307.1475pt>
 File: fig/acc-c.pdf Graphic file (type pdf)
 <use fig/acc-c.pdf>
-Package pdftex.def Info: fig/acc-c.pdf  used on input line 1077.
+Package pdftex.def Info: fig/acc-c.pdf  used on input line 1095.
 (pdftex.def)             Requested size: 129.0pt x 99.68115pt.
- [8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9 <./fig/V-N-M2.pdf> <./fig/V-N-M4.pdf> <./fig/V-N-M8.pdf> <./fig/v-c.pdf> <.
-/fig/p-c.pdf> <./fig/acc-c.pdf>] (TSC.bbl
+ [9] (TSC.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 4--6
 []\OT1/ptm/m/n/8 ``https://www.bloomberg.com/news/articles/2017-07-06/electric-
 cars-
  []
 
-[10]) (app.tex Excluding 'comment' comment.
+[10 <./fig/V-N-M2.pdf> <./fig/V-N-M4.pdf> <./fig/V-N-M8.pdf> <./fig/v-c.pdf> <.
+/fig/p-c.pdf> <./fig/acc-c.pdf>]) (app.tex Excluding 'comment' comment.
 Underfull \hbox (badness 1383) in paragraph at lines 194--195
 []\OT1/ptm/m/n/10 In case \OT1/ptm/m/it/10 b\OT1/ptm/m/n/10 , ac-cord-ing to Eq
 . (3[]), we have $\OML/cmm/m/it/10 R[] \OMS/cmsy/m/n/10 
@@ -616,48 +616,46 @@ Underfull \hbox (badness 6510) in paragraph at lines 278--281
 S \OT1/ptm/m/n/10 is
  []
 
-Excluding 'comment' comment.) Excluding 'comment' comment. [12] (TSC.aux)
+[12] Excluding 'comment' comment.) Excluding 'comment' comment. [13
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] (TSC.aux) ) 
 Here is how much of TeX's memory you used:
- 6746 strings out of 492891
- 103260 string characters out of 3133342
- 194073 words of memory out of 3000000
- 10509 multiletter control sequences out of 15000+200000
+ 6754 strings out of 492891
+ 103397 string characters out of 3133342
+ 194131 words of memory out of 3000000
+ 10517 multiletter control sequences out of 15000+200000
  67714 words of font info for 129 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
  41i,22n,39p,1460b,533s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courie
-r/ucrro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on TSC.pdf (12 pages, 797679 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/urw/courier/ucrro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/
+uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/urw/times/utmri8a.pfb>
+Output written on TSC.pdf (13 pages, 803294 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
+ 357 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

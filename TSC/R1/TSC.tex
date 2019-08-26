@@ -247,7 +247,25 @@ Our problem in this paper is unique from above works in many respects. First, we
 %It is important to note that there is a considerable similarity between EV scheduling problem and classical job scheduling problem \cite{}. However, most algorithm developed for job scheduling problem  do not consider a limit on processing rate of the jobs. 
 
 %\cite{Shroff2014} and \cite{Stein2012} study social welfare maximization problem while the profit of both EV owners and CS is considered.  social welfare of the EV owners \cite{Stein2012}, charging cost \cite{Tang,WTang}, and total value of fully charged EVs \cite{Azar}). In addition, \cite{WTang, Tang,Shroff2014,Zhao} do not take into account the peak limitation of CS. }
-		\section{System Model and Problem Formulation}
+
+\subsubsection{Worst case analysis in EV scheduling}
+\label{sec:rel:comp}
+\bt{
+The performance of an approximation algorithm is determined by its \emph{approximation ratio} for offline 
+algorithms and \emph{competitive ratio} for online algorithms which compare the algorithm's result to optimal solution. 
+Under integral revenue model, \cite{jain2015near} proposes an offline algorithm for scheduling of batch jobs in cloud computing which is equivalent to EV scheduling problem. It is assumed that all jobs are available to be processed at time 0. The authors propose a $\frac{C}{C-k}.\frac{s}{s-1}$-approximation algorithm where $C$ is the cloud capacity and $s$ is a ``slackness'' parameter. 
+Similarly, \cite{yao2016real} tackles the offline integral problem and proposes a convex relaxation method to find a near-optimal solution. No theoretical bound is provided for the algorithm and the performance is examined by simulation results. In this paper, we propose \ics for the same problem and provide competitive ratio under specific scenarios. 
+In case of fractional revenue model (for offline case), the scheduling problem is by far easier to tackle. For example, in this paper we propose \fcs as an optimal solution for offline fractional case. 
+
+In online scenarios, the scheduling problem is more challenging. In our recent study \cite{alinia2018competitive}, 
+we proposed two online algorithms referred to as WFAIR and WRAND for EV scheduling problem. The proposed algorithms provide a competitive ratio of $2-1/U$ where $U$ is "scarcity level". However, \cite{alinia2018competitive} the result only holds when all EVs have the same maximum charging rate. Also, \cite{alinia2018competitive} does not study the integral revenue model. In this paper, we propose \focs as a 2-competitive online algorithm with no assumption on the input parameters. Also, current study investigates both fractional and integral revenue model while considering total peak constraint in the formulation and addressing multiple charging station scenario. 
+~\cite{firstfit} proposes two simple and natural online algorithms called \textsc{FirstFit} and \textsc{EndFit} where both are proved to be 2-competitive. \focs is extension of these algorithms by taking into account the maximum charging rate of the EVs and multiple charging station scenario (see ``Remarks'' at Section IV).
+As recent studies, \cite{zheng2016online,deng2016whether} provide online algorithms for EV scheduling problem 
+
+When online scenario is considered under integral revenue model, the scheduling problem becomes severely difficult and challenging. We note that the integral scheduling problem is strongly NP-Hard even in the offline case \cite{de2018complexity}. There are very limited studies in this category. \cite{lucier2013efficient} provides an online algorithm without considering the maximum processing rate of the jobs where its competitive ratio can be arbitrary bad depending on ``slackness'' parameter'. The slackness parameter also appears in our proposed online solution for integral revenue model, \iocs for multiple station scenario where maximum charging rate of the EVs is taken into account.
+}
+
+\section{System Model and Problem Formulation}
 		\label{sec:model}
 		
 		
