@@ -45,10 +45,12 @@ foot=2cm,bottom=4cm]{geometry}
 \newcommand{\folp}{\textsc{foLP}\xspace}
 
 \ifodd 1
+\newcommand{\bt}[1]{{\color{red}#1}}%revise of the text
 \newcommand{\rev}[1]{{\color{black}#1}}%revise of the text
 \newcommand{\com}[1]{\textbf{\color{red}(Bahram says: #1)}}%comment of the text
 \newcommand{\comm}[1]{\textbf{\color{red}(Mohammad says: #1)}}%comment of the text
 \else
+\newcommand{\bt}[1]{#1}
 \newcommand{\rev}[1]{#1}
 \newcommand{\com}[1]{}
 \fi
@@ -71,7 +73,7 @@ foot=2cm,bottom=4cm]{geometry}
 We are very grateful for handling our paper and the time and effort that you and your team put into the process. We have thoroughly revised our manuscript based on your and the referees' constructive comments. This document provides a summary of changes made in the revised manuscript and detailed responses to the comments of the reviewers. The major changes in the revised manuscript are summarized below:
 
 \begin{enumerate}
-\item \textit{...}. 
+\item \textit{\color{red} @Mohammad: better to remove this bullet section as we don't have many items to talk about (the only main change is in Related Work)}. 
 
 
 \end{enumerate}
@@ -98,9 +100,9 @@ In what follows, we mention first the comments (as appeared in the decision lett
 \noindent\textbf{Response:}
 In the revised version, we further clarified the significance of the theoretical results. Even though some assumptions are made for the theoretical analysis of the proposed algorithms, we note two important significance of our results: \textit{First}, the algorithms work effectively in practice as demonstrated in real-world trace-driven experiments, for the general cases without those assumptions; and \textit{secondly}, the theoretical analysis of underlying mathematical problems in the general setting are extremely challenging problems in the theoretical computer science literature, in particular, job scheduling problems. To the best of our knowledge, there is no deep theoretical understanding of online algorithms for the general setting of this problem. In the revised manuscript, we added a subsection, in Section II, and highlighted the theoretical significance of our paper. 
 
-In addition, in the paper, we clearly distinguished between the results in this paper and our previous conference paper on IEEE/ACM IWQoS 2018. Our work in this paper considers more general problem formulation, with global peak constraints, and a comprehensive revenue model. The developed algorithms in Section V, for the integral revenue model, are new in this work. Finally, the trace-driven experimental results are more extensive in this paper and provide comparisons with an algorithm that are currently in use in a real-world charging station. 
+In addition, in the paper, we clearly distinguished between the results in this paper and our previous conference paper on IEEE/ACM IWQoS 2018. Our work in this paper considers more general problem formulation, with global peak constraints, multiple station scenario and a comprehensive revenue model. \bt{Although  ``fractional revenue'' model is studied in both papers (and in some other studies), the proposed algorithms are  different in idea, results and underlying system model. Also, the Section V for the integral revenue model is new in this work. Finally, the trace-driven experimental results are more extensive in this paper and provide comparisons with an algorithm that are currently in use in a real-world charging station. }
 
-We highlighted both of the revisions in the revised manuscript and also addressed several other comments that are proposed by the reviewers. 
+%We highlighted both the revision in the revised manuscript and also addressed several other comments that are proposed by the reviewers. 
 
 
 
@@ -123,7 +125,7 @@ We highlighted both of the revisions in the revised manuscript and also addresse
 $\vartriangleright$ \noindent\textbf{Response:} 
 Our earlier work presents algorithms for only fractional revenue model. Current manuscript, which can be considered as journal extension of the previous work, studies both fractional and integral models. Although the presented algorithms in the conference version provide a competitive ratio of $2-1/U$ (with $U$ as "scarcity level"), the proof holds when all EVs have the same maximum charging rate. In the current study, we consider heterogeneity in this parameter and prove the online algorithm is 2-competitive.
 
-\textit{To clarify this, we added an explanation in Section ...   @Bahram: please add a subsection in Related work and explain IWQoS and other theoretical papers. This is the most important task for this revision. }
+\bt{To clarify this, we added an explanation in last paragraph of the Introduction section and Section II-3 when describing related works.   }
 
 \vspace{3mm}
 {\color{blue} Furthermore, why is there no inclusion of electricity prices and/or value for demand response, which is a particular powerful use case for EV charging scheduling? More generally speaking, please add a proper motivation of the two models: when would we use which model in practice? }
@@ -182,9 +184,11 @@ The constraint (1d) applies on each time slot $t$ for each EV $i$ and enforces r
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-We added an example in Page xx to demonstrate why the simple approach mentioned by the reviewer is not optimal.
+Thanks for the comment. This approach is equal to running an optimal algorithm at each time slot considering only available EVs and assuming no more EVs will arrive. We added a paragraph in the beginning of Section IV.A to explain this. 
 
-{\color{red}@ Mohammad: I copied the following from TSG response letter. We can update and add it to the paper.}
+{\color{red}@ Mohammad: Should we use the following example in here or in the paper?}
+
+We added an example in Page xx to demonstrate why the simple approach mentioned by the reviewer is not optimal.
 
 The proposed approach by the reviewer is a popular, yet straightforward method in the online scheduling. However, it turns out that this approach cannot provide an optimal solution to the problem even in fractional revenue model. In fact, this approach only provides a 2-competitive solution. i.e., the profit obtained by this approach would be $1/2$ of the optimum. We bring an example to clarify.
 
@@ -316,7 +320,7 @@ The focus of this paper, in on more comprehensive online algorithm design for fr
 $\vartriangleright$ \noindent\textbf{Response:} 
 The length of the time slot can be arbitrary set in the algorithms and we used 1 hour in experiments since the availability window of our traces was in one hour slots. With more fine grained data, it would be possible to run the algorithms in faster timescales, e.g., 5 minutes or so. 
 
-We note that the derived complexities of the algorithms in the paper include parameter $T$ as number of time slots in a day (please see Table II in the manuscript). In large scale scenarios, the effect of increasing $T$ would be negligible in performance of the algorithms as long as it $T/N$ is a constant ($N$ is number of EVs). Therefore, when $N$ grows large and $T$ is a constant, $T$ can be removed from the complexities in the Table II. 
+We note that the derived complexities of the algorithms in the paper include parameter $T$ as number of time slots in a day (please see Table II in the manuscript). In large scale scenarios, the effect of increasing $T$ would be negligible in performance of the algorithms as long as it $T/N$ is a constant ($n$ is number of EVs). Therefore, when $n$ grows large and $T$ is a constant, $T$ can be removed from the complexities in the Table II. 
 
 %Another point is that in real electricity market prices are only allowed to be changed hourly which is the reason most power scheduling algorithms work with one-hour slots.
 
@@ -326,7 +330,7 @@ We note that the derived complexities of the algorithms in the paper include par
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-The complexity of the algorithms are low and we just set the charging rate by a simple sorting on arrival of each EV. \textbf{Bahram, please confirm.}
+\bt{As explained in the previous comment, we derived the time complexity of all proposed algorithms (listed in Table II in the paper) which indicate their running time in large scale scenarios (i.e., when $n$ is large). If we assume that $T$ is a constant (which is a quite realistic assumption), the complexity of all algorithms simplifies to $O(n^2)$. Hence, we believe that a normal PC could be fast enough to run the algorithms.}
 
 %\bibliography{ref-response}{}
 %\vspace{-3mm}
