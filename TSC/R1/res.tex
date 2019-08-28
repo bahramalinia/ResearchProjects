@@ -45,7 +45,7 @@ foot=2cm,bottom=4cm]{geometry}
 \newcommand{\folp}{\textsc{foLP}\xspace}
 
 \ifodd 1
-\newcommand{\bt}[1]{{\color{red}#1}}%revise of the text
+\newcommand{\bt}[1]{{\color{black}#1}}%revise of the text
 \newcommand{\rev}[1]{{\color{black}#1}}%revise of the text
 \newcommand{\com}[1]{\textbf{\color{red}(Bahram says: #1)}}%comment of the text
 \newcommand{\comm}[1]{\textbf{\color{red}(Mohammad says: #1)}}%comment of the text
@@ -70,13 +70,7 @@ foot=2cm,bottom=4cm]{geometry}
 
 \textbf{Dear Editor,}
 
-We are very grateful for handling our paper and the time and effort that you and your team put into the process. We have thoroughly revised our manuscript based on your and the referees' constructive comments. This document provides a summary of changes made in the revised manuscript and detailed responses to the comments of the reviewers. The major changes in the revised manuscript are summarized below:
-
-\begin{enumerate}
-\item \textit{\color{red} @Mohammad: better to remove this bullet section as we don't have many items to talk about (the only main change is in Related Work)}. 
-
-
-\end{enumerate}
+We are very grateful for handling our paper and the time and effort that you and your team put into the process. We have thoroughly revised our manuscript based on your and the referees' constructive comments. This document provides a summary of changes made in the revised manuscript and detailed responses to the comments of the reviewers. 
 
 
 In what follows, we mention first the comments (as appeared in the decision letter, highlighted in {\color{blue} blue} in this letter) followed by a description on how we addressed those comments in the paper. Once again, thank you and your team for providing very constructive comments to help in improving this paper.
@@ -100,7 +94,7 @@ In what follows, we mention first the comments (as appeared in the decision lett
 \noindent\textbf{Response:}
 In the revised version, we further clarified the significance of the theoretical results. Even though some assumptions are made for the theoretical analysis of the proposed algorithms, we note two important significance of our results: \textit{First}, the algorithms work effectively in practice as demonstrated in real-world trace-driven experiments, for the general cases without those assumptions; and \textit{secondly}, the theoretical analysis of underlying mathematical problems in the general setting are extremely challenging problems in the theoretical computer science literature, in particular, job scheduling problems. To the best of our knowledge, there is no deep theoretical understanding of online algorithms for the general setting of this problem. In the revised manuscript, we added a subsection, in Section II, and highlighted the theoretical significance of our paper. 
 
-In addition, in the paper, we clearly distinguished between the results in this paper and our previous conference paper on IEEE/ACM IWQoS 2018. Our work in this paper considers more general problem formulation, with global peak constraints, multiple station scenario and a comprehensive revenue model. \bt{Although  ``fractional revenue'' model is studied in both papers (and in some other studies), the proposed algorithms are  different in idea, results and underlying system model. Also, the Section V for the integral revenue model is new in this work. Finally, the trace-driven experimental results are more extensive in this paper and provide comparisons with an algorithm that are currently in use in a real-world charging station. }
+In addition, in the paper, we clearly distinguished between the results in this paper and our previous conference paper on IEEE/ACM IWQoS 2018. Our work in this paper considers more general problem formulation, with global peak constraints, multiple station scenario and a comprehensive revenue model. \bt{Although  ``fractional revenue'' model is studied in both papers (and in some other studies as well), the proposed algorithms are  different in idea, results and underlying system model. Also, Section V for the integral revenue model is new in this work. Finally, the trace-driven experimental results are more extensive in this paper and provide comparisons with an algorithm that are currently in use in a real-world charging station. }
 
 %We highlighted both the revision in the revised manuscript and also addressed several other comments that are proposed by the reviewers. 
 
@@ -123,15 +117,13 @@ In addition, in the paper, we clearly distinguished between the results in this 
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-Our earlier work presents algorithms for only fractional revenue model. Current manuscript, which can be considered as journal extension of the previous work, studies both fractional and integral models. Although the presented algorithms in the conference version provide a competitive ratio of $2-1/U$ (with $U$ as "scarcity level"), the proof holds when all EVs have the same maximum charging rate. In the current study, we consider heterogeneity in this parameter and prove the online algorithm is 2-competitive.
+Our earlier work presents algorithms for only fractional revenue model. Current manuscript, which can be considered as an extension of the previous work, studies both fractional and integral models. Although the presented algorithms in the conference version provide a competitive ratio of $2-\frac{1}{U}$ (where $U$ denotes "scarcity level"), the proofs hold when all EVs have the same maximum charging rate. In the current study, we consider heterogeneity in this parameter and prove the online algorithm is 2-competitive.
 
-\bt{To clarify this, we added an explanation in last paragraph of the Introduction section and Section II-3 when describing related works.   }
+\bt{To clarify this, we added an explanation in last paragraph of Introduction section in Page 2 and Section II-3 in Page 3 when describing related works.   }
 
 \vspace{3mm}
 {\color{blue} Furthermore, why is there no inclusion of electricity prices and/or value for demand response, which is a particular powerful use case for EV charging scheduling? More generally speaking, please add a proper motivation of the two models: when would we use which model in practice? }
 \vspace{3mm}
-
-{\color{red}: @Mohammad: This is not clear for me in most parts} 
 
 $\vartriangleright$ \noindent\textbf{Response:} 
 The variable $v_i$ defined in the paper is valuation of EV $i$ when it receives its demand $D_i$. In simple and default case $v_i$ can represent the price imposed by charging station that the owner of EV $i$ should pay to receive its demand, $D_i$ (as it is in the paper). In this case, the charging station is allowed to use any pricing policy as it does not affect our algorithms. With this interpretation, our algorithms solve revenue maximization problem for utility provider. $v_i$ can also represent the valuation of demand from the user's point of view indicating that how much the user will be happy if it receives its submitted demand. With this interpretation, our algorithms try to maximize users' satisfaction or users' social welfare. Therefore, our proposed algorithms are general and work for any valuation setting that is proposed by either EVs or charging stations.
@@ -150,7 +142,7 @@ $\vartriangleright$ \noindent\textbf{Response:} We note that the underlying prob
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-The current experiments (i) shows the effect of problem parameters, including the number of charging stations and number of vehicles (in Figure 2), and the impact of peak constraint and demand (in directly) (in Figure 3). The impact of arrival and departure times could be interpreted as more/less flexibility in charging scheduling. Our result in Figure 3, indeed, investigates the impact of flexibility in charging scheduling. 
+The current experiments (i) shows the effect of problem parameters, including the number of charging stations and number of vehicles (in Figure 2), and the impact of peak constraint and demand indirectly (Figure 3). The impact of arrival and departure times could be interpreted as more/less flexibility in charging scheduling. Our result in Figure 3, indeed, investigates the impact of flexibility in charging scheduling. 
 
 
 Our work is substantially different from Yao et al. (2017), since the authors consider an offline scenario for managing EV charging scheduling. The proposed algorithm in their work is an offline algorithm based on convex relaxation of the underlying combinatorial problem. They assume that all the required information for decision making is available in advance. Our work, in contrast, tackle another version of EV charging scheduling with global peak constraints. \textit{The significance of our work is to consider the online setting in which the input to the problem arrives over time, and develop algorithms that are provably efficient against this uncertainty of the system.} As for comparison, we compared our results with the offline optimal solution (that is equivalent to the optimal solution of the problem studied in Yao's paper without demand-response constraints). In the results reported in Figure 3, we have reported the results of offline optimal as \textsc{iOPT}. 
@@ -163,46 +155,29 @@ Our work is substantially different from Yao et al. (2017), since the authors co
 $\vartriangleright$ \noindent\textbf{Response:} 
 We listed pseudo-codes for all proposed algorithms (Algorithm 1-7) in the main body of the paper. Despite the technical challenges in the analysis, the main body of the algorithms are fairly simple and an interested reader can easily convert them to real implementation code. Last, we have provided some sample code implementations of our algorithms in 
 %We believe that detailed implementation of the algorithms has no added value as the goal here is to provide algorithms and analysis and not focusing on programming challenges.
-here: https://github.com/bahramalinia/EV-Scheduling.git
+here: https://github.com/bahramalinia/EV-Scheduling
   
 \vspace{3mm}
 {\color{blue} On page 2 and page 7 you write that "the underlying problem is NP-hard due to 0/1 selection" and you mention knapsack, but in fact knapsack is one of the easier NP-hard problems. It seems that your integral model models a strongly NP-hard problem, see De Weerdt et al. (2018). }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-Thanks for the point. We agree that our problem is strongly NP-Hard and we corrected the related phrases in the manuscript. Please see Page ?? of the revised manuscript. 
+Thanks for the point. We agree that our problem is strongly NP-Hard and we corrected the related phrases in the manuscript. 
 
 \vspace{3mm}
 {\color{blue} On page 4, l19, the constraint (1d) seems to force equal charging speed from the arrival time to the departure time. I don't think this constraint is met by the greedy algorithms, is it? Then this is not your "Scheduling Problem for Adaptive charging Network (SPAN) under fractional revenue model"? }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-The constraint (1d) applies on each time slot $t$ for each EV $i$ and enforces respecting maximum charging rate at each $t$ for all $i$. The constraint say nothing about the relation between charging rates at different slots (including forcing them to be equal).
+The constraint (1d) applies on each time slot $t$ for each EV $i$ and ensures respecting maximum charging rate at each $t$ for all $i$. The constraint say nothing about the relation between charging rates at different slots (including forcing them to be equal).
 
 \vspace{3mm}
 {\color{blue} p4: The discussion of the offline algorithm could benefit from an example why straightforwardly allocating the most valuable ($v_i/D_i$) is not optimal (because of charging speed limits), and then introduce the greedy re-allocation (based on flexibility). }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-Thanks for the comment. This approach is equal to running an optimal algorithm at each time slot considering only available EVs and assuming no more EVs will arrive. We added a paragraph in the beginning of Section IV.A to explain this. 
-
-{\color{red}@ Mohammad: Should we use the following example in here or in the paper?}
-
-We added an example in Page xx to demonstrate why the simple approach mentioned by the reviewer is not optimal.
-
-The proposed approach by the reviewer is a popular, yet straightforward method in the online scheduling. However, it turns out that this approach cannot provide an optimal solution to the problem even in fractional revenue model. In fact, this approach only provides a 2-competitive solution. i.e., the profit obtained by this approach would be $1/2$ of the optimum. We bring an example to clarify.
-
-Fig. \ref{fig:1a} shows a simple scenario in a single charging station with $T=2$ and $p_1=p^{\text{total}}=1$. The charging profile of an EV $i$ is shown in the form of $\pi_i=(a_i,d_i,v_i,D_i,k_i)$ where it is assumed that $k_i=1$ for all $i$.
-At $t=1$, EVs 1 and 2 arrive and the scheduler has no information about the future coming EVs. If we run an optimal offline algorithm over the available EVs at $t=1$, it will allocate EV 2 at $t=1$ and postpone charging of EV 1 to $t=2$ according to their deadline. Now assume that EV 3 arrives at $t=2$ which has the same demand and unit value as EV 1 (see Fig. \ref{fig:1b}). Then, by re-computing the optimal solution at $t=2$, the solution is to choose either EV 1 or EV 3 to charge due to capacity constraint. Therefore, the final solution obtained by this approach achieves a total revenue of $1+\epsilon$ by charging EVs 2 at $t=1$ and one of the EVs 1 or 3 at $t=2$. However, the optimal solution in this example is charging EV 1 at $t=1$ and EV 3 at $t=2$ and obtaining a gain equal to 2. This example shows that the competitive ratio of the proposed approach by the reviewer cannot be better than $2-\epsilon$ where $\epsilon$ can be arbitrarily small.  
-
-\begin{figure}
-\centering     %%% not \center
-		\subfloat[{EVs $1$ and $2$ arrive at $t=1$.}]{\label{fig:1a}\includegraphics[width=60mm]{Ex1a.pdf}}
-		\hspace{8mm}
-		\subfloat[{EV $3$ arrives at $t=2$.}]{\label{fig:1b}\includegraphics[width=60mm]{Ex1b.pdf}}
-\caption{Worst case scenario when the scheduling algorithm is to re-run an optimal algorithm at each time slot considering only available EVs. Dotted line indicates a time slot that is not visited yet and the scheduler has no information about the arriving EVs in that slot. The numbers inside parentheses indicate arrival time, deadline, value, demand and maximum charging rate of the EV, respectively.}
-\label{fig:1}
-\end{figure}
+Thanks for the comment.  
+The proposed approach by the reviewer is a popular, yet straightforward method in the scheduling problems. However, it turns out that this approach cannot provide an optimal solution to the problem even in fractional revenue model. In fact, this approach only provides a 2-approximation solution. i.e., the profit obtained by this approach would be $1/2$ of the optimum. We added a paragraph in the beginning of Section IV.A to explain this with an example. 
 
 \vspace{3mm}
 {\color{blue} In the experimental evaluation the results for both models are put together in the same figure, which gets us into the odd situation that some results are better than optimal.
@@ -210,7 +185,7 @@ At $t=1$, EVs 1 and 2 arrive and the scheduler has no information about the futu
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-We agree and this is unfortunately consequence of space limit. To avoid confusion, we added an explanation in Page xx, when describing the results. 
+We agree and to avoid confusion, we added an explanation in the caption of Fig. 2 in page 10. 
 
 \vspace{3mm}
 {\color{blue} typos:
@@ -249,7 +224,7 @@ p9: "IO LP.Recall"
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-...
+Thanks for the subtle comments. We corrected them.
 
 
 \begin{itemize}
@@ -281,8 +256,6 @@ doi: 10.1109/IWQoS.2018.8624184
 $\vartriangleright$ \noindent\textbf{Response:} 
 Thanks for suggesting the related works. In the revised version we added all of them as well as several more recent papers, that are highlighted in blue. 
 
-{\color{red} I should check these papers and add to Related Work if needed.}
-
 \vspace{3mm}
 {\color{blue} 2. The authors claim that if prediction or modeling techniques were used, the performance of the proposed algorithms would deteriorate. However, they do not present any results to support their claim.  }
 \vspace{3mm}
@@ -298,7 +271,7 @@ The above statement provides a high-level difference between prediction-based ap
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-Although this can be an interesting extension, in this version, we assumed that a user chooses only one CS to ask for its demand and may drive to another CS if its demand is not fulfilled. We admit that this suggestion is a very elegant extension from the perspective of theoretical problem formulation and algorithm design, and makes the scenario more challenging. In addition, this suggestion makes more sense in scenarios in which EVs are heterogeneous and a subset of chargers can satisfy a subset of EVs. We do believe that this is an very interesting scenario to consider, however, as mentioned by the reviewer, it increases the complexity of designing and analysis of the algorithms, and is beyond the scope of this submission. 
+Although this can be an interesting extension, in this version, we assumed that a user chooses only one CS to ask for its demand and may drive to another CS if its demand is not fulfilled. We admit that this suggestion is a very elegant extension from the perspective of theoretical problem formulation and algorithm design, and makes the scenario more challenging. In addition, this suggestion makes more sense in scenarios in which EVs are heterogeneous and a subset of chargers can satisfy a subset of EVs. We do believe that this is an interesting scenario to consider, however, as mentioned by the reviewer, it increases the complexity of designing and analysis of the algorithms, and is beyond the scope of this submission. 
 
 \vspace{3mm}
 {\color{blue} Is truth telling regarding the EVs’ valuations guaranteed? Is it possible for the EVs to cooperate and report lower valuations? It is not clear in the paper. If not, this could come in contrast with the revenue maximization objective function. Moreover, this would cause serious implications in the online algorithms which use the valuations to select the EVs to charge.}
@@ -307,20 +280,23 @@ Although this can be an interesting extension, in this version, we assumed that 
 $\vartriangleright$ \noindent\textbf{Response:} 
 This is an important and interesting point raised by the reviewer. Although we did not study the case for self interested users in this paper, we addressed it in our recent work: 
 
-B. Alinia, M. H. Hajiesmaili, and N. Crespi, "Online EV Charging Scheduling with On-Arrival Commitment", \textit{IEEE Trans. on Int. Transportation Systems (ITS)}, 2019.
+\begin{itemize}
+\item B. Alinia, M. H. Hajiesmaili, and N. Crespi, "Online EV charging scheduling with on-arrival commitment," \textit{IEEE Transaction on Intelligent Transportation Systems}, Jan. 2019.
+\end{itemize}
 
-In the above cited paper, we propose "SCOMMIT" algorithm where its core allocation idea is based on users' unit-values except that it also provides on-arrival commitment. Since it is proved that SCOMMIT is truthful, we believe that among the proposed algorithms in current manuscript, the FOCS is truthful. In the above paper, also, we tackled another desirable property to commit EVs on their arrival on how much they can get charged during their available window. 
 
-The focus of this paper, in on more comprehensive online algorithm design for fractional and integral revenue models, and for our ITS paper, we focused on truthfulness and on-arrival commitment. It is worth noting that developing solutions that provide competitiveness against offline optimal versus those that provide truthfulness and on-arrival commitment, needs different algorithmic techniques and tools. As a notable result, an interesting theoretical observation in our ITS shows that there is no online algorithms that can simultaneously provide on-arrival commitment and bounded competitive ratio. See Section 6 and Theorem 5 of our ITS paper for more details. 
+In the above cited paper, we propose "SCOMMIT" algorithm where its core allocation idea is based on users' unit-values except that it also provides on-arrival commitment. Since it is proved that SCOMMIT is truthful, we believe that among the proposed algorithms in current manuscript, the FOCS is truthful. In the above paper, also, we tackled another desirable property to give commitment to the users at their arrival time about the minimum amount of resource they can get by their deadline. 
+
+The focus of this paper is to consider more comprehensive online algorithm design for fractional and integral revenue models, while in the ITS paper, we focused on truthfulness and on-arrival commitment. It is worth noting that developing solutions that provide competitiveness against offline optimal versus those that provide truthfulness and on-arrival commitment, needs different algorithmic techniques and tools. As a notable result, an interesting theoretical observation in our ITS paper shows that there is no online algorithms that can simultaneously provide on-arrival commitment and bound the competitive ratio. See Section 6 and Theorem 5 of our ITS paper for more details. 
 
 \vspace{3mm}
 {\color{blue} 5. The length of each time point is set to 1 hour. This is too long, and the accuracy of the algorithms is reduced. Moreover, the online algorithm is not really online, as it schedules EVs every hour. }
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-The length of the time slot can be arbitrary set in the algorithms and we used 1 hour in experiments since the availability window of our traces was in one hour slots. With more fine grained data, it would be possible to run the algorithms in faster timescales, e.g., 5 minutes or so. 
+The length of the time slot can be arbitrary set in the algorithms. However, we used 1 hour in the experiments since the availability window in our traces was in one hour slots. With more fine grained data, it would be possible to run the algorithms in faster timescales, e.g., 5 minutes or so. 
 
-We note that the derived complexities of the algorithms in the paper include parameter $T$ as number of time slots in a day (please see Table II in the manuscript). In large scale scenarios, the effect of increasing $T$ would be negligible in performance of the algorithms as long as it $T/N$ is a constant ($n$ is number of EVs). Therefore, when $n$ grows large and $T$ is a constant, $T$ can be removed from the complexities in the Table II. 
+We note that the derived complexities of the algorithms in the paper include parameter $T$ as number of time slots in a day (please see Table II in the manuscript). In large scale scenarios, the effect of increasing $T$ would be negligible in performance of the algorithms as long as it $T$ is a constant. 
 
 %Another point is that in real electricity market prices are only allowed to be changed hourly which is the reason most power scheduling algorithms work with one-hour slots.
 
@@ -330,7 +306,7 @@ We note that the derived complexities of the algorithms in the paper include par
 \vspace{3mm}
 
 $\vartriangleright$ \noindent\textbf{Response:} 
-\bt{As explained in the previous comment, we derived the time complexity of all proposed algorithms (listed in Table II in the paper) which indicate their running time in large scale scenarios (i.e., when $n$ is large). If we assume that $T$ is a constant (which is a quite realistic assumption), the complexity of all algorithms simplifies to $O(n^2)$. Hence, we believe that a normal PC could be fast enough to run the algorithms.}
+\bt{As explained in the response to the previous comment, we derived the time complexity of all proposed algorithms (listed in Table II in the paper) which indicate their running time in large scale scenarios (i.e., when $n$ as number of EVs grows large). If we assume that $T$ is a constant (which is quite realistic assumption), the complexity of all algorithms simplifies to $O(n^2)$. Hence, we believe that a normal PC could be fast enough to run the algorithms.}
 
 %\bibliography{ref-response}{}
 %\vspace{-3mm}

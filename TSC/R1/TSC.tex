@@ -253,7 +253,7 @@ Our problem in this paper is unique from above works in many respects. First, we
 \subsubsection{Worst-case Analysis in Similar Scheduling Problems}
 \label{sec:rel:comp}
 \bt{
-	Similar underlying scheduling problems with slightly different settings have been studied in the literature in both offline and online settings. In offline setting, the problem is more interesting in integral revenue model where the problem becomes a combinatorial optimization problem and approximation algorithms have been used to find effective solutions. 
+	Similar underlying scheduling problems with slightly different settings have been studied in the literature in both offline and online settings. In offline setting, the problem is more interesting \bt{under integral revenue model} where the problem becomes a combinatorial optimization problem and approximation algorithms have been used to find effective solutions. 
 The performance of an approximation algorithm is determined by its \emph{approximation ratio} for offline 
 algorithms. On the other hand, competitive online algorithms are used in the online setting and \emph{competitive ratio} is the performance metric which compares the algorithm's result to the offline optimal solution. 
 
@@ -396,7 +396,7 @@ This is the model that is considered in~\cite{WTang,Shroff2014}. We tackle this 
 		Integral revenue model, however, turns the underlying charging scheduling problem to a Mixed Integer Linear Program (MILP). The integer nature originates from the $0/1$-selection decision on EVs. 
 %%%Recall that in integral revenue model the revenue is obtained given that the entire demand is fulfilled for the selected EV. 
 		%We skip the explicit formulation of the problem under integral revenue model since it could be contemplated as the linear-relaxed version of the integral revenue model (for more explanation, we refer to the discussions in Section~\ref{sec:fractional}).
-		We formulate Scheduling Problem for Adaptive charging Network (\MCSP) under fractional revenue model as follows: 
+		\bt{We formulate a Scheduling Problem} for Adaptive charging Network (\MCSP) under fractional revenue model as follows: 
 		\bse
 		\bee
 		\MCSP: \max  && \sum\nolimits_{i=1}^n \frac{v_{i}}{D_i}\sum\nolimits_{t=a_i}^{d_i} y_i^t \label{Pobjec} \nonumber\\
@@ -453,8 +453,8 @@ A summary of proposed algorithms with their complexity and assumptions is given 
 \subsection{Optimal Offline Design}
 \label{sec:fopt}	
 \bt{
-In this section, we propose an optimal algorithm for offline fractional model. As a natural solution, one may think of a greedy algorithm with the strategy as follows: at each time slot, charge the EV with highest unit-value and process others if only the resource cannot be used by this EV (probably due to maximum charging rate constraint). 
-This approach is a popular, yet straightforward method in the online scheduling. However, it turns out that this approach cannot provide an optimal solution to the problem even in fractional revenue model. In fact, this approach only provides a 2-competitive solution. i.e., the profit obtained by the algorithm would be $1/2$ of the optimum. As an intuition of the proof think of two EVs where the one with lower unit value cannot wait due to its deadline and the EV with higher unit value has a long park time. Then, the optimal solution here could be first serving the EV with earlier deadline (and not the one with highest unit values).
+In this section, we propose an optimal algorithm for offline fractional model. As a natural solution, one may think of a greedy algorithm as follows: at each time slot, charge the EV(s) with highest unit-value and process others if only the remaining resource cannot be allocated to the selected EV(s) (e.g., due to maximum charging rate constraint or fulfillment of the EVs' demand). 
+This approach is a popular, yet straightforward method in the scheduling. However, it turns out that this approach cannot provide an optimal solution to the problem even in fractional revenue model. In fact, this solution is only 2-approximation (i.e., the profit obtained by the algorithm would be $1/2$ of the optimum). As an intuition of the proof think of two EVs in a single charging station with power capacity $p$ and $\frac{v_1}{D_1}-\frac{v_2}{D_2}=\epsilon$  where $\epsilon > 0$ is an arbitrary small number, $a_1=a_2=1, d_1=2, d_2=1$ and $D_1=D_2=k_1=k_2=p$. Then, applying the simple greedy, EV 1 will be selected at time slot 1 and EV 2 will have no chance to get charged due to its deadline constraint while EV 1 could wait until time slot 2 and still receive all its demand.
 }	
 		
 We refer the proposed algorithm in this secion as the \fcs and summarize it as Algorithm~\ref{alg:optimal-off}.
@@ -864,7 +864,7 @@ A ranking based approach is used to apply the aforementioned policies.
 		
 		\subsubsection{Analysis}
 		\label{subsec:analysis}
-		In primal-dual algorithm, the goal is to design an algorithm in a way that it produces a good solution for primal problem (with primal value $\Gamma$) and a feasible solution for the dual problem (with dual value $\Lambda$). Then, assuming that the primal problem is a maximization problem, to prove that the algorithm is $c-$approximation (for $c\geq 1$), the important part is to show that $\Lambda\leq c\Gamma$. Then, based on weak duality theorem we have $\Lambda\geq \opt$, and it is concluded that $\Gamma \geq \frac{1}{c}\times\opt$ where $\opt$ is the optimal value. 
+		\bt{In a primal-dual algorithm}, the goal is to design an algorithm in a way that it produces a good solution for primal problem (with primal value $\Gamma$) and a feasible solution for the dual problem (with dual value $\Lambda$). Then, assuming that the primal problem is a maximization problem, to prove that the algorithm is $c-$approximation (for $c\geq 1$), the important part is to show that $\Lambda\leq c\Gamma$. Then, based on weak duality theorem we have $\Lambda\geq \opt$, and it is concluded that $\Gamma \geq \frac{1}{c}\times\opt$ where $\opt$ is the optimal value. 
 		Based on the above understanding, the following theorem scrutinizes the approximation ratio of the \ics assuming that arrival times are the same for all EVs. 
 %		First note that the designed scheduling algorithm outputs a feasible scheduling since it respects the constraints in the primal problem. Also, the algorithm produces a feasible solution for the dual problem by covering the dual problem constraint in (\ref{ConstDcover}) through setting $\alpha _i$ to $\frac{v_i}{D_i}$ when EV $i$ is accepted and, $\beta (t)$ to a value greater than or equal to $\frac{v_i}{D_i}$ for $t\in [a_i, d_i]$ (according to the discussion in Section \ref{sec:icsexplanation}) if EV $i$ is not selected. To obtain an approximation factor for the algorithm, it is enough to bound the total covering cost of the dual constraints.
 		
@@ -892,7 +892,7 @@ A ranking based approach is used to apply the aforementioned policies.
 	
 \subsection{Online Scenario}
 \label{sec:onlineint}
-Due to the binary selection variable, the online solution design under integral model is more challenging than the one for fractional model. We propose the \iocs that is built upon the offline \ics. In particular, the \iocs calls the \ics at each time slot for the set of available EVs, however, any algorithm that is designed for offline integral model can be used alternatively. Hereinafter, $\mathcal{A}$ refers to the \ics or a similar algorithm.
+Due to the binary selection variable, the online solution design under integral model is more challenging than the one for fractional model. \bt{We propose \iocs} that is built upon the offline \ics. In particular, the \iocs calls the \ics at each time slot for the set of available EVs, however, any algorithm that is designed for offline integral model can be used alternatively. Hereinafter, $\mathcal{A}$ refers to the \ics or a similar algorithm.
 
 \begin{algorithm}%\small%1
 \footnotesize
@@ -953,7 +953,7 @@ Use the first schedule
 
 \end{algorithm}
 
-The \iocs is summarized as Algorithm~\ref{alg:iocs}. At slot $t$, the \iocs compares two scheduling results returned by $\mathcal{A}$ and chooses among them. In the first scheduling, the \iocs keeps all reserved resources in interval $[t,T]$ intact. Then, for utilizing the remaining resources, the algorithm runs $\mathcal{A}$ over arrived EVs at time slot $t$. In this case, the total revenue obtained by the \emph{active} EVs (i.e., EVs that are available but not received their entire demand yet) is denoted by $\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}$ (Line $6$ of the algorithm). In the second scheduling, the \iocs considers the case that it can sacrifice the previously admitted EVs by canceling their reservations and allocating the freed resources to more valuable demands. For this purpose, the algorithm modifies the demand and valuation of the previously admitted EVs such that each demand is replaced by the EV's remaining demand, and the valuation of the EV is proportionally calculated based on the remaining demand (Line $9$ of the algorithm) so that the unit values of EVs do not change. Then, the \iocs runs $\mathcal{A}$ over set of active EVs $\mathcal{M}^t$ where the corresponding gain is denoted by $\Gamma_{\mathcal{A},\mathcal{M}^t}$. If $\Gamma_{\mathcal{A},\mathcal{M}^t}>\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}$, the \iocs forgets the previously admitted EVs and follows the second scheduling. 
+The \iocs is summarized as Algorithm~\ref{alg:iocs}. At slot $t$, the \iocs compares two scheduling results returned by $\mathcal{A}$ and chooses among them. In the first scheduling, the \iocs keeps all reserved resources in interval $[t,T]$ intact. Then, for utilizing the remaining resources, the algorithm runs $\mathcal{A}$ over arrived EVs at time slot $t$. In this case, the total revenue obtained by the \emph{active} EVs (i.e., EVs that are available but not received their entire demand yet) is denoted by $\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}$ (Line $6$ of the algorithm). In the second scheduling, the \iocs considers the case that it can sacrifice the previously admitted EVs by canceling their reservations and allocating the freed resources to more valuable demands. For this purpose, the algorithm modifies the demand and valuation of the previously admitted EVs such that each demand is replaced by the EV's remaining demand, and the valuation of the EV is proportionally calculated based on the remaining demand (Line $9$ of the algorithm) so that the unit values of EVs do not change. Then, the \iocs runs $\mathcal{A}$ \bt{on set of} active EVs $\mathcal{M}^t$ where the corresponding gain is denoted by $\Gamma_{\mathcal{A},\mathcal{M}^t}$. If $\Gamma_{\mathcal{A},\mathcal{M}^t}>\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}$, the \iocs forgets the previously admitted EVs and follows the second scheduling. 
 
 
 
@@ -969,7 +969,7 @@ Having $i\in\mathcal{S}_{\iocs,t}$ means that based on the updated schedule at t
 The following theorem characterizes the competitive ratio of the \iocs in a special case. 
 \begin{thm}
 \label{thm:iocscompetitive}
-Let $\mathcal{A}$ be \ics in \iocs algorithm and $m=1$. Assuming that EVs are released in $b$ distinct groups where arrival time of EVs in each group are the same, the \iocs is $b\Big(1+\frac{p}{p-q}\frac{s}{s-1}\Big)$-competitive with optimal offline solution, where $p$ is the station peak and $q=\max_i k_i, i=1,\dots ,n$. 
+Let $\mathcal{A}$ be \ics in \iocs algorithm and $m=1$. Assuming that EVs are released in $b$ distinct groups where arrival time of EVs in each group are the same, the \iocs is $b\Big(1+\frac{p}{p-q}\frac{s}{s-1}\Big)$-competitive \bt{with optimal} offline solution, where $p$ is the station peak and $q=\max_i k_i, i=1,\dots ,n$. 
 \end{thm}
 
 
@@ -1008,7 +1008,7 @@ Let $\mathcal{A}$ be \ics in \iocs algorithm and $m=1$. Assuming that EVs are re
 						\label{fig:V-N-M8}
 					\end{center}
 				\end{subfigure}% 
-				\caption{\revv{Comparison results for $2$, $4$, and $8$ CSs for fractional and integral revenue models.}} 
+				\caption{\revv{Comparison results for $2$, $4$, and $8$ CSs for fractional and integral revenue models. \bt{In the algorithms' name, letters ``o'', ``f'' and ``i'' indicate online, fractional and integral, respectively. Note that a ``non-optimal'' fractional algorithm can potentially achieve better result than an ``optimal'' integral algorithm due to higher flexibility in power allocation.} }} 
 				\label{fig:V-N-M}
 %				\vspace{-3mm}
 			\end{figure*}
@@ -1018,7 +1018,7 @@ We gathered information of \revv{$12$} popular EV models in the market to use in
 %Battery capacity varies from \revv{$14$} kWh to \revv{$100$} kWh and the maximum charging rate from \revv{$3.3$} kW to \revv{$22$} kW. 
 %As in \cite{Tang,Chen}, we assume that arrival times follow a Poisson distribution and parking times follow an exponential distribution.
 % with the mean arrival and parking duration indicated in Table \ref{tb:a-d}. 
-The peak intervals include $08$:$00$-$10$:$00$, $12$:$00$-$14$:$00$, and $18$:$00$-$20$:$00$ which is in accordance to NHTS survey~\cite{Santos, Tang}. \revv{The probability of arriving an EV in the peak hours is two times higher than the off-peak periods.
+The peak intervals include $08$:$00$-$10$:$00$, $12$:$00$-$14$:$00$, and $18$:$00$-$20$:$00$ \bt{according to NHTS} survey~\cite{Santos, Tang}. \revv{The probability \bt{of an EV's arrival} during the peak hours is two times higher than the off-peak periods.
 			Demands are uniform random values from 
 			$[\frac{1}{2}U_i,U_i]$} where $U_i$ is the battery capacity for EV $i$ in Table~\ref{tb:models}. \revv{The deadline of each EV is set according to slackness parameter $s$ (with default value of $1.2$), its demand and maximum charging rate of the battery as $d_i=a_i+\lceil \frac{D_is}{k_i} \rceil -1$.} 
 %			The minimum electricity cost is $\$0.11$ per kWh based on US national electricity price average~\cite{kWhcost}. In our setting, users can submit higher prices than the minimum price in order to ensure receive their requested demand. 
@@ -1113,7 +1113,7 @@ GreedyRTL & The algorithm in \cite{Jain} for single station scenario without glo
 \textit{\revv{Evaluation Based on Total Revenue}:}
 \revv{Fig. \ref{fig:V-N-M} depicts the comparison results based on total revenue under fractional and integral models} while the total number of EVs increases from \revv{$100$ to $250$} for $2$, $4$, and $8$ CSs. \revv{The local and global peak constraints are set to $50$ kWh and $200$ kWh, respectively.}
 
-The proposed algorithms compared to the optimal offline solution of integral model ($\textsc{iOPT}$) and $\iolp$. \bt{Note that comparison with offline optimal could be considered as a baseline comparison with the category of approximate offline algorithms in integral model~\cite{yao2016real}.}
+\bt{The proposed algorithms are compared to} the optimal offline solution of integral model ($\textsc{iOPT}$) and $\iolp$. \bt{Note that comparison with offline optimal could be considered as a baseline comparison with the category of approximate offline algorithms in integral model~\cite{yao2016real}.}
 
 %%% which is the running online algorithm in the Caltech ACN \cite{lee2016adaptive}. 
 %The proposed algorithms for fractional revenue model, \fcs and \focs, are compared to fractional version of OLP algorithm (referred to as \folp), which is implemented in Caltech ACN  (see~\cite{alinia2017online} for details). 
@@ -1232,6 +1232,9 @@ As the notable contributions, our proposed online algorithm for fractional reven
 \bibliography{ref}{}
 %\vspace{-2.8mm}
 \bibliographystyle{ieeetr}
+\newpage
+{\color{white}...}    
+\newpage
 
 \input{app.tex}
 

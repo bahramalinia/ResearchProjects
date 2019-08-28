@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.24)  27 AUG 2019 22:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.24)  28 AUG 2019 22:45
 entering extended mode
 **./res.tex
 (res.tex
@@ -716,54 +716,39 @@ Non-PDF special ignored!
 <special> papersize=597.50787pt,845.04684pt
 
 {C:/Users/balinia/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-[3] [4]
-<figRes/Ex1a.pdf, id=52, 164.86594pt x 102.06732pt>
-File: figRes/Ex1a.pdf Graphic file (type pdf)
-<use figRes/Ex1a.pdf>
-Package pdftex.def Info: figRes/Ex1a.pdf  used on input line 200.
-(pdftex.def)             Requested size: 170.71652pt x 105.69273pt.
-<figRes/Ex1b.pdf, id=53, 164.86594pt x 99.37125pt>
-File: figRes/Ex1b.pdf Graphic file (type pdf)
-<use figRes/Ex1b.pdf>
-Package pdftex.def Info: figRes/Ex1b.pdf  used on input line 202.
-(pdftex.def)             Requested size: 170.71652pt x 102.9009pt.
- [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 256.
+[3] [4] [5]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 231.
 
  ("C:\Program Files\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 256.
- [6 <./figRes/Ex1a.pdf> <./figRes/Ex1b.pdf
-
-pdfTeX warning: pdflatex (file ./figRes/Ex1b.pdf): PDF inclusion: multiple pdfs
- with page group included in a single page
->] [7] [8] [9] [10] (res.aux) ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 231.
+ [6]
+[7] [8] [9] (res.aux) ) 
 Here is how much of TeX's memory you used:
- 16297 strings out of 492891
- 312527 string characters out of 3133342
- 370825 words of memory out of 3000000
- 19870 multiletter control sequences out of 15000+200000
- 16496 words of font info for 64 fonts, out of 3000000 for 9000
+ 16253 strings out of 492891
+ 311904 string characters out of 3133342
+ 369781 words of memory out of 3000000
+ 19835 multiletter control sequences out of 15000+200000
+ 14306 words of font info for 55 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 62i,10n,87p,1546b,509s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcs
-c10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on res.pdf (10 pages, 550738 bytes).
+ 62i,6n,81p,1546b,196s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
+12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+ti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam1
+0.pfb>
+Output written on res.pdf (9 pages, 176284 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
+ 107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 119 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
