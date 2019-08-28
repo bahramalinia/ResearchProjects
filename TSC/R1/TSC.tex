@@ -253,20 +253,20 @@ Our problem in this paper is unique from above works in many respects. First, we
 \subsubsection{Worst-case Analysis in Similar Scheduling Problems}
 \label{sec:rel:comp}
 \bt{
-	Similar underlying scheduling problems with slightly different settings have been studied in the literature in both offline and online settings. In offline setting, the problem is more interested in integral revenue model where the problem becomes a combinatorial optimization problem and approximation algorithms have been used to find effective solutions. 
+	Similar underlying scheduling problems with slightly different settings have been studied in the literature in both offline and online settings. In offline setting, the problem is more interesting in integral revenue model where the problem becomes a combinatorial optimization problem and approximation algorithms have been used to find effective solutions. 
 The performance of an approximation algorithm is determined by its \emph{approximation ratio} for offline 
 algorithms. On the other hand, competitive online algorithms are used in the online setting and \emph{competitive ratio} is the performance metric which compares the algorithm's result to the offline optimal solution. 
 
-\textbf{Offline integral model}: Under integral revenue model, \cite{jain2015near} proposes an offline algorithm for scheduling of batch jobs in cloud computing which is similar to EV scheduling problem. It is assumed that all jobs are available to be processed at time 0. The authors propose a $\frac{C}{C-k}.\frac{s}{s-1}$-approximation algorithm where $C$ is the cloud capacity and $s$ is the ``slackness parameter'' (See section \ref{sec:acn} for the definition). 
-Similarly, \cite{yao2016real} tackles the offline integral problem and proposes a convex relaxation method to find a near-optimal solution. No theoretical bound is provided for the algorithm and the performance is examined by simulation results. In this paper, we propose \ics for the EV scheduling problem with slightly different settings in the constraint sets, and tackle the problem in online setting in which the full knowledge of the online parameters is not available a priori, and provide competitive ratio under specific scenarios. 
+\textit{Offline integral model}: Under integral revenue model, \cite{jain2015near} proposes an offline algorithm for scheduling of batch jobs in cloud computing which is similar to EV scheduling problem. It is assumed that all jobs are available to be processed at time 0. The authors propose a $\frac{C}{C-k}.\frac{s}{s-1}$-approximation algorithm where $C$ is the cloud capacity and $s$ is the ``slackness parameter'' (See section \ref{sec:acn} for the definition). 
+Similarly, \cite{yao2016real} tackles the offline integral problem and proposes a convex relaxation method to find a near-optimal solution. No theoretical bound is provided for the algorithm and the performance is examined by simulation results. In this paper, we propose \ics for the EV scheduling problem with slightly different settings in the constraint sets, and tackle the problem in online setting in which the full knowledge of the online parameters is not available a priori, and provide approximation ratio under specific scenarios. 
 
-\textbf{Offline fractional model}: In case of fractional revenue model (for offline case), the scheduling problem is more straightforward to tackle since the underlying problem is linear. In this paper, we propose \fcs as an optimal solution for offline fractional case with low time complexity.
+\textit{Offline fractional model}: In case of fractional revenue model (for offline case), the scheduling problem is more straightforward to tackle since the underlying problem is linear. In this paper, we propose \fcs as an optimal solution for offline fractional case with low time complexity.
 
-\textbf{Online fractional model}: In the online scenario, the scheduling problem is fundamentally more challenging. In our recent study \cite{alinia2018competitive}, 
+\textit{Online fractional model}: In the online scenario, the scheduling problem is fundamentally more challenging. In our recent study \cite{alinia2018competitive}, 
 we proposed two online algorithms referred to as WFAIR and WRAND for EV scheduling problem. The proposed algorithms provide a competitive ratio of $2-1/U$ where $U$ is "scarcity level". However, the result only holds when all EVs have the same maximum charging rate. Also, \cite{alinia2018competitive} does not study the integral revenue model. In this paper, we propose \focs as a 2-competitive online algorithm with no assumption on the input parameters. Moreover, the current study investigates both fractional and integral revenue model while considering total peak constraint in the formulation and addressing multiple charging station scenario. 
 In another work~\cite{firstfit}, two simple and natural online algorithms called \textsc{FirstFit} and \textsc{EndFit} were developed and are proved to be 2-competitive. \focs is extension of these algorithms by taking into account the maximum charging rate of the EVs and multiple charging station scenario (see ``Remarks'' at Section IV). As recent studies, \cite{zheng2016online,deng2016whether} provide online algorithms for EV scheduling problem, however, they do not take into account global peak constraint in the underlying problem. 
 
-\textbf{Online integral model}: Another direction is to tackle online scenario under integral revenue model. In this setting, the scheduling problem becomes fundamentally more challenging. We note that the integral scheduling problem is strongly NP-Hard even in the offline case \cite{de2018complexity}. Due to combined online and combinatorial challenges, there are very limited studies in this category. \cite{lucier2013efficient} provides an online algorithm without considering the maximum processing rate of the jobs where its competitive ratio can be arbitrary bad depending on ``slackness'' parameter. 
+\textit{Online integral model}: Another direction is to tackle online scenario under integral revenue model. In this setting, the scheduling problem becomes fundamentally more challenging. We note that the integral scheduling problem is strongly NP-Hard even in the offline case \cite{de2018complexity}. Due to combined online and combinatorial challenges, there are very limited studies in this category. \cite{lucier2013efficient} provides an online algorithm without considering the maximum processing rate of the jobs where its competitive ratio can be arbitrary bad depending on ``slackness'' parameter. 
 Our work in Section~\ref{sec:onlineint} extends this study for multiple station scenario and considering maximum charging rate for the EVs.
 }
 
@@ -320,7 +320,8 @@ Our solutions in this paper will be centralized ones which can be obtained throu
 \end{figure}
 
 		\begin{table} 
-			\caption{Summary of key notations}\vspace{-3mm}
+			\caption{Summary of key notations}
+%			\vspace{-3mm}
 			\label{tbl:not}
 			\begin{center}
 				\begin{tabular}{|c L{6.5cm}|}
@@ -375,7 +376,7 @@ This is the model that is considered in~\cite{WTang,Shroff2014}. We tackle this 
 		
 			\begin{table*}[!t]
 			\centering
-	\vspace{-3mm}
+%	\vspace{-3mm}
 			\caption{Proposed algorithms and their properties.}
 			\label{tbl:algs}
 			\begin{tabular}{ | l | c | c | c |c|}
@@ -579,7 +580,7 @@ The following theorem characterizes the complexity of \fcs.
 \end{thm}
 }
 
-\vspace{-4mm}
+%\vspace{-4mm}
 \subsection{Online Scenario}
 \label{sec:fonline}
 In this section, we devise an algorithm for the scenario that EVs arrive in online fashion. The scheduling decisions at each time slot are made given the information of available EVs and neither exact values nor stochastic modeling of future arrivals is available. Our goal is to obtain a \emph{competitive ratio} for the online algorithm. A scheduling algorithm $\mathcal{A}$ is $c$-competitive for $c\geq 1$ if the revenue obtained by the optimal offline algorithm is at most $c$ times the algorithm $\mathcal{A}$'s revenue for any input sequence~\cite{borodin2005online}.
@@ -589,7 +590,7 @@ The proposed online algorithm for the fractional model, referred to as \focs, is
 The time complexity of the \focs is $O(n^2T)$, determined by cost of its ``\textbf{for}'' loop multiplied by total number of times that the algorithm needs to be run.
 % i.e., $T$. 
 
-\vspace{-4mm}
+%\vspace{-4mm}
 \begin{algorithm}%\small%1
 \footnotesize
 \caption{\focs: $\forall t\in \{1,2,\dots ,T\}$}
@@ -771,7 +772,7 @@ A ranking based approach is used to apply the aforementioned policies.
 \emph{Dual Feasibility of the Non-selected EVs:} \bt{If remaining power resource is not enough} to fully charge EV $i$, i.e.,  $D_i>\sum_{t=a_i}^{d_i}\sigma_t$, the EV cannot be selected. However, we still need to satisfy constraint~\eqref{ConstDcover} in dual problem which is done by calling \bc($i$). To cover the constraint~\eqref{ConstDcover} for EV $i$, sum of dual variables for all $t\in [a_i ,d_i]$ should be greater than or equal to ${v_i \slash D_i}$. \bc($i$) sets $\beta (t)$ to ${v_i \slash D_i}$ for all time slots $t$ in interval $[t_\mathsf{cov}, R(d_i)]$ (Lines $3$-$4$ of Algorithm~\ref{alg:betacover}). Observe that  ${\beta (t^\prime)\geq v_i \slash D_i,\forall t^\prime< t_\mathsf{cov}}$ (with $ t_\mathsf{cov}>1$) considering that the demands are sorted in a non-increasing order of the unit-values and $\beta (t')$ is already set to ${v_{i'} \slash D_{i'}}$ when processing the earlier charging demand of EV $i'$ which is not selected. Hence, ${v_{i'}\slash  D_{i'}\geq v_i \slash D_i}$, thereby ${\beta (t)\geq v_i \slash D_i,}$ and the dual constraint in~\eqref{ConstDcover} is satisfied.		
 		Lines $1$-$4$ of \bc\ is enough to cover the dual constraint. However, the algorithm continues in Lines $5$-$8$ by setting a variable $\Phi_{i'}(t)$ for time slots $t=1,\dots ,R(d_i)$ to a value dependent to amount of the resource that a selected EV $i'$ received at slot $t$. $\Phi_{i'}(t)$ will be used in approximation analysis of the main algorithm and has no effect on the scheduling of EVs. 
 		%We borrowed algorithm \bc($i$) from \cite{Jain} and adjusted it for multiple station mode.		
-		\vspace{-3mm}
+%		\vspace{-3mm}
 		\begin{algorithm}%\small%1
 			\footnotesize
 			\caption{\sa($i,D_i$)}
@@ -790,7 +791,7 @@ A ranking based approach is used to apply the aforementioned policies.
 				
 			}
 		\end{algorithm}	
-		\vspace{-7mm}	
+%		\vspace{-7mm}	
 		\begin{algorithm}%\small%1
 			\footnotesize
 			\caption{\bc($i$)}
@@ -816,7 +817,7 @@ A ranking based approach is used to apply the aforementioned policies.
 				}
 			}
 		\end{algorithm}
-		\vspace{-7mm}
+%		\vspace{-7mm}
 		\begin{algorithm}%\small%1
 			\footnotesize		
 			\caption{\rc($i$)}
@@ -978,7 +979,7 @@ Let $\mathcal{A}$ be \ics in \iocs algorithm and $m=1$. Assuming that EVs are re
 %\end{thm}
 		
 		
-\vspace{-6mm}
+%\vspace{-6mm}
 \section{Simulation Results}
 			\label{sec:simul}
 %%%In this section, we report a summary of simulation experiments to evaluate the performance of the proposed algorithms. 
@@ -1009,7 +1010,7 @@ Let $\mathcal{A}$ be \ics in \iocs algorithm and $m=1$. Assuming that EVs are re
 				\end{subfigure}% 
 				\caption{\revv{Comparison results for $2$, $4$, and $8$ CSs for fractional and integral revenue models.}} 
 				\label{fig:V-N-M}
-				\vspace{-3mm}
+%				\vspace{-3mm}
 			\end{figure*}
 %\subsection{Simulation Setup and Overview}
 \textit{Simulation Setup and Overview:} We consider charging scheduling of EVs \revv{during a period of $12$ time slots of length $1$ hour (e.g., from $08$:$00$ to $20$:$00$)}. 
@@ -1107,7 +1108,7 @@ GreedyRTL & The algorithm in \cite{Jain} for single station scenario without glo
 				\end{subfigure}% 				
 				\caption{\revv{Comparison in terms of total revenue, actual peak, and percentage of fully charged EVs by varying local peak value}.} 
 				\label{fig:peak_local}
-			\vspace{-4mm}
+%			\vspace{-4mm}
 			\end{figure*}
 \textit{\revv{Evaluation Based on Total Revenue}:}
 \revv{Fig. \ref{fig:V-N-M} depicts the comparison results based on total revenue under fractional and integral models} while the total number of EVs increases from \revv{$100$ to $250$} for $2$, $4$, and $8$ CSs. \revv{The local and global peak constraints are set to $50$ kWh and $200$ kWh, respectively.}
@@ -1205,8 +1206,8 @@ In Fig. \ref{fig:v-c}, the results for \ics and GreedyRTL are almost identical w
 
 			%In fact, the slackness parameter controls the maximum demand or earliest deadline that an EV can submit to the system. Remember that demands are in interval $[\textrm{min}\{\frac{d_i-a_i}{sk_i},U_i\},U_i]$ for EV $i$ meaning that the maximum demand that an EV can submit decreases by increasing slackness parameter. A reduction in total demand result in lower charging costs. Therefore, the total revenue decreases with higher values of parameter $s$ as in Fig. \ref{fig:v-s}. 
 			%Also, the percentage of EVs that received all of their requested demand increases based on the same fact. The main goal of this simulation is to observe that obtained theoretical result on approximation ratio is confirmed as optimality gap of the SCS algorithm reduces by increasing $s$ in Fig. \ref{fig:v-s}. 
-\vspace{0.1mm}
-\vspace{-4mm}
+%\vspace{0.1mm}
+%\vspace{-4mm}
 			\section{Conclusion}
 			\label{sec:conclusion}
 This paper proposed offline and online algorithms for the EV charging scheduling problem under fractional and integral revenue models in an adaptive charging network (ACN). The problem is different, and more challenging than the existing single station EV charging scheduling problems since it requires respecting the aggregate peak charging demand of the ACN. 
@@ -1214,7 +1215,7 @@ This paper proposed offline and online algorithms for the EV charging scheduling
 As the notable contributions, our proposed online algorithm for fractional revenue model achieves constant competitive ratio of $2$. Moreover, the offline integral algorithm achieves a theoretical bound on the optimality gap and approximates the optimum by $92\%$, on average in experiments. As a future work, we plan to study the problem under posted pricing mechanism where the charging station publishes the unit price of the power (which can be varied over time) and the users can accept or reject the offer.
 \revv{Another interesting future direction is to tackle the EV charging scheduling in market-based scenarios where the prices change over time.}
 %As a future work, we plan to analyze the truthfulness of the algorithms to make sure that it is a dominant strategy for the EV owners to declare their true valuations and availabilities.
-\vspace{-4mm}
+%\vspace{-4mm}
 
 %\input{intro.tex}
 %\input{rel.tex}
@@ -1229,7 +1230,7 @@ As the notable contributions, our proposed online algorithm for fractional reven
 %\newpage
 %\pagestyle{empty}
 \bibliography{ref}{}
-\vspace{-2.8mm}
+%\vspace{-2.8mm}
 \bibliographystyle{ieeetr}
 
 \input{app.tex}
