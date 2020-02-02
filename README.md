@@ -1,8 +1,35 @@
 # ResearchProjects
 My sample research papers in algorithms and optimization for wireless sensor networks and smart grid (EV scheduling)
 
-• B. Alinia, M. H. Hajiesmaili and, N. Crespi, “Online Charging Scheduling of EVs with On-Arrival Charging Commitments,” IEEE Transactions
-on Intelligent Transportation Systems, 2019.
+## **B. Alinia**, M. H. Hajiesmaili, Z. J. Lee, N. Crespi, and E. Mallada “Online EV Scheduling Algorithms for Adaptive Charging Networks with Global Peak Constraints,” IEEE Transactions on Sustainable Computing (to appear), 2020.
+
+Abstract—This paper tackles online scheduling of electric
+vehicles (EVs) in an adaptive charging network (ACN) with
+local and global peak constraints. Given the aggregate charging
+demand of the EVs and the peak constraints of the ACN, it
+might be infeasible to fully charge all the EVs according to
+their charging demand. Two alternatives in such resource-limited
+scenarios are to maximize the social welfare by partially charging
+the EVs (fractional model) or selecting a subset of EVs and
+fully charge them (integral model). The critical challenge is the
+need for online solution design since in practical scenarios the
+scheduler has no information of future arrivals of EVs in a timecoupled
+underlying problem. For the fractional model, we devise
+both offline and online algorithms. We prove that the offline
+algorithm is optimal. Using competitive ratio as the performance
+measure, we prove the online algorithm achieves a competitive
+ratio of 2. The integral model, however, is more challenging
+since the underlying problem is NP-hard due to 0/1 selection
+criteria of EVs. Hence, efficient solution design is challenging
+even in offline setting. We devise a low-complexity primal-dual
+scheduling algorithm that achieves a bounded approximation
+ratio. Built upon the offline approximate algorithm, we propose
+an online algorithm and analyze its competitive ratio in special
+cases. Extensive trace-driven experimental results show that the
+performance of the proposed online algorithms is close to the
+offline optimum, and outperform the existing solutions.
+
+## **B. Alinia**, M. H. Hajiesmaili and, N. Crespi, “Online Charging Scheduling of EVs with On-Arrival Charging Commitments,” IEEE Transactions on Intelligent Transportation Systems, 2019.
 
 Abstract—The rapid proliferation of electric vehicles has
 resulted in a drastic increase in the total energy demand of EVs.
@@ -25,10 +52,9 @@ collude with other EVs. Extensive simulations using real traces
 demonstrate the effectiveness of our online scheduling algorithms
 as compared to the optimal non-committed offline solution.
 
-##########################################################################################
-• B. Alinia, M. H. Hajiesmaili, M. S. Talebi, and N. Crespi, “Competitive Online Scheduling Algorithms with Applications in Deadline-
-Constrained EV Charging,” in Proc. of IEEE/ACM International Symposium on Quality of Service (IWQoS), 2018.
-acceptance ratio: 20.8%
+---------------
+
+## **B. Alinia**, M. H. Hajiesmaili, M. S. Talebi, and N. Crespi, “Competitive Online Scheduling Algorithms with Applications in Deadline-Constrained EV Charging,” in Proc. of IEEE/ACM International Symposium on Quality of Service (IWQoS), 2018. (acceptance ratio: 20.8%)
 
 Abstract—This paper studies the classical problem of online
 scheduling of deadline-sensitive jobs with partial values and
@@ -52,8 +78,8 @@ technique could also be used to simplify the competitive analysis
 of some existing algorithms, and thus could be of independent
 interest.
 
-##########################################################################################
-• B. Alinia, M. H. Hajiesmaili, A. Khonsari and, N. Crespi,“Maximum-Quality Tree Construction for Deadline-Constrained Aggregation in WSNs,” IEEE Sensors Journal, 2017.
+---
+## **B. Alinia**, M. H. Hajiesmaili, A. Khonsari and, N. Crespi,“Maximum-Quality Tree Construction for Deadline-Constrained Aggregation in WSNs,” IEEE Sensors Journal, 2017.
 
 Abstract—In deadline-constrained wireless sensor networks
 (WSNs), the quality of aggregation (QOA) is determined
@@ -81,10 +107,8 @@ performance and appreciably outperform methods that work
 on a fixed aggregation tree by obtaining better quality of
 aggregation.
 
-##########################################################################################
-• B. Alinia, M. H. Hajiesmaili, and A. Khonsari, “On the Construction of Maximum-Quality Aggregation Trees in Deadline-Constrained
-WSNs,” In Proc. of IEEE INFOCOM, 2015.
-acceptance ratio: 19.3%
+----
+## **B. Alinia**, M. H. Hajiesmaili, and A. Khonsari, “On the Construction of Maximum-Quality Aggregation Trees in Deadline-Constrained WSNs,” In Proc. of IEEE INFOCOM, 2015. (acceptance ratio: 19.3%)
 
 Abstract—In deadline-constrained data aggregation in wireless
 sensor networks (WSNs), the imposed sink deadline in an
@@ -113,9 +137,8 @@ the proposed algorithms significantly improve QoA by 101% and
 93% on average compared to the best, to our knowledge, existing
 alternative methods.
 
-##########################################################################################
-• B. Alinia, H. Yousefi, M. S. Talebi, and A. Khonsari, ”Maximizing Quality of Aggregation in Delay-Constrained Wireless Sensor Networks”,
-IEEE Communications Letters, 2013.
+----
+## **B. Alinia**, H. Yousefi, M. S. Talebi, and A. Khonsari, ”Maximizing Quality of Aggregation in Delay-Constrained Wireless Sensor Networks”, IEEE Communications Letters, 2013.
 
 Abstract—In this letter, both the number of participating nodes
 and spatial dispersion are incorporated to establish a bi-objective
