@@ -1,0 +1,190 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+%\documentclass[journal]{IEEEtran}
+%\usepackage{float}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{amssymb,amsmath}
+\usepackage[font=small,skip=10pt]{caption}
+\usepackage{subcaption}
+\usepackage{comment}
+\usepackage{color,soul}
+%\usepackage{ragged2e} 
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{array}
+%\usepackage{nopageno}
+\usepackage{url}
+%\usepackage{hyperref}
+%\usepackage{ulem}
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{hhline}
+%\usepackage[pdftex]{graphicx}
+
+% *** GRAPHICS RELATED PACKAGES1 ***
+%
+
+% more space
+%\usepackage{txfonts}
+%\addtolength{\abovedisplayskip}{-2mm}
+%\addtolength{\belowdisplayskip}{-2mm}
+%\addtolength{\parskip}{-.15mm}
+%\addtolength{\arraycolsep}{-.75mm}
+%\addtolength{\abovecaptionskip}{-1mm}
+%\addtolength{\belowcaptionskip}{-1mm}
+%\renewcommand{\baselinestretch}{0.9}
+
+
+\ifCLASSINFOpdf
+\usepackage[pdftex]{graphicx}
+\graphicspath{{fig/}{../}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg}
+\else
+\usepackage[dvips]{graphicx}
+\graphicspath{{fig/}{../}}
+\DeclareGraphicsExtensions{.eps}
+\fi
+
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+%\setlength{\intextsep}{-1ex} % remove extra space above and below in-line float
+
+
+\renewcommand{\baselinestretch}{1}
+
+\ifodd 1
+\newcommand{\bt}[1]{{\color{blue}#1}}%revise of the text
+\newcommand{\rev}[1]{{\color{black}#1}}%revise of the text
+\newcommand{\revv}[1]{{\color{black}#1}}%revise of the text
+\newcommand{\com}[1]{\textbf{\color{red}(COMMENT: #1)}}%comment of the text
+\else
+\newcommand{\bt}[1]{#1}
+\newcommand{\rev}[1]{#1}
+\newcommand{\com}[1]{}
+\fi
+
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%\newcommand{\opt}{\textsc{OPT}\xspace}
+\newcommand{\sa}{\textsc{SmartAllocate}}
+\newcommand{\rc}{\textsc{ReConsider}}
+\newcommand{\bc}{\textsc{BetaCover}}
+\newcommand{\ics}{\textsc{iCS}\xspace}
+\newcommand{\fcs}{\textsc{fCS}\xspace}
+\newcommand{\MCSP}{\textsf{SPAN}\xspace}
+\newcommand{\dMCSP}{\textsf{dSPAN}\xspace}
+\newcommand{\focs}{\textsc{foCS}\xspace}
+\newcommand{\iocs}{\textsc{ioCS}\xspace}
+\newcommand{\finalalg}{\textsc{ioCS+}\xspace}
+\newcommand{\opt}{\textsc{OPT}\xspace}
+\newcommand{\alg}{\textsc{ALG}\xspace}
+\newcommand{\rtl}{\textsc{GreedyRTL}\xspace}
+\newcommand{\iolp}{\textsc{ioLP}\xspace}
+\newcommand{\folp}{\textsc{foLP}\xspace}
+
+\newcommand{\be}{\begin{equation}}
+	\newcommand{\ee}{\end{equation}}
+\newcommand{\bee}{\begin{eqnarray}}
+	\newcommand{\eee}{\end{eqnarray}}
+\newcommand{\bse}{\begin{subequations}}
+	\newcommand{\ese}{\end{subequations}}
+%\def\bee#1\eee{\begin{align}#1\end{align}}
+\newcommand{\nnb}{\nonumber}
+
+\newtheorem{lem}{Lemma}
+\newtheorem{propos}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defi}{Definition}
+
+
+%in terms of practical feasibility and characterizing the maximum benefits of D2D load balancing is
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\makeatletter
+\newcommand\semiHuge{\@setfontsize\semiHuge{22.52}{27.38}}
+\makeatother
+\begin{document}
+	%\semiHuge
+	\title{Online EV Scheduling Algorithms for Adaptive Charging Networks with Global Peak Constraints}
+	\author{\#}
+	
+	\author{Bahram Alinia, Mohammad H. Hajiesmaili, Zachary J. Lee, Noel Crespi, and Enrique Mallada
+		
+		\thanks{ B. Alinia and N. Crespi are with the department of Networks and Mobile Multimedia Services (RS2M), Institut Mines-Telecom,
+	Telecom SudParis, Evry, France (e-mail: bahram.alinia@telecom-sudparis.eu, noel.crespi@mines-telecom.fr).
+	
+	M. H. Hajiesmaili is with the College of Information and Computer Sciences, University of Massachusetts Amherst, Amherst, MA, USA (email: hajiesmaili@cs.umass.edu). He is supported by NSF through grant CNS 1908298. 
+	
+	Z. J. Lee is with the Department of Electrical Engineering, California Institute of Technology, Pasadena, CA, USA (e-mail: zlee@caltech.edu).	
+	He is supported by the NSF Graduate Research Fellowship Program (Grant No. 1745301) and Resnick Sustainability Institute.	
+	
+	E. Mallada is with the Department of Electrical and Computer Engineering, Johns Hopkins University, Baltimore, MD, USA (e-mail: mallada@jhu.edu). He is supported by ARO through contract W911NF-17-1-0092, US DoE EERE award DE-EE0008006, and NSF through grants CNS 1544771, EPCN 1711188, AMPS 1736448, and CAREER 1752362.
+
+		}	
+		\vspace{-0.05in}	
+		}
+
+
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+%			With the rapid growth of electric vehicles, their high demand charging jobs pose an immense challenge to the grid infrastructure. 
+			This paper tackles online scheduling of electric vehicles (EVs) in an adaptive charging network (ACN) with local and global peak constraints. Given the aggregate charging demand of the EVs and the peak constraints of the ACN, it might be infeasible to fully charge all the EVs according to their charging demand. Two alternatives in such resource-limited scenarios are to maximize the social welfare by partially charging the EVs (fractional model) or selecting a subset of  EVs and fully charge them (integral model). 
+%			This paper tackles both fractional and integral models. 
+			The technical challenge is the need for online solution design since in practical scenario\revv{s} the scheduler has no or limited information of future arrivals in a time-coupled underlying problem. 
+			For the fractional model, we devise both offline and online algorithms. We prove that the offline algorithm is optimal. Using competitive ratio as the performance measure, we prove the online algorithm achieves a competitive ratio of 2. The integral model, however, is more challenging since the underlying problem is strongly NP-hard due to 0/1 selection criteria of EVs. Hence, efficient solution design is challenging even in offline setting. For offline setting, we devise a low-complexity primal-dual scheduling algorithm that achieves a bounded approximation ratio. Built upon the offline approximate algorithm, we propose an online algorithm and analyze its competitive ratio in special cases. Extensive trace-driven experimental results show that the performance of the proposed online algorithms is close to the offline optimum, and outperform the existing solutions. 
+%			\rev{In particular, the grid and electricity providers should be aware of the electricity peak.	It is known in electricity market that the spot price is a dominating factor in billing cost. Hence, the utility companies need to identify a global peak constraint for the cost management purpose. This paper studies the online EV charging scheduling problem in a utility that offers EV charging service in a set of CSs, each of which having limited output power (referred to as local peak constraint) while taking into account the global peak constraint. The scheduling problem in this scenario comes with unique challenges that is not tackled previously.}
+
+
+%			\rev{The problem objective is to maximize total revenue of the CSs.} 
+
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+		\begin{IEEEkeywords}
+			Electric Vehicle, Online Scheduling, Approximation Algorithm, Competitive Analysis
+		\end{IEEEkeywords}	}
+
+		\maketitle	
+
+\input{intro.tex}
+
+\input{relatedWork.tex}
+
+\input{systemModel.tex}
+
+\input{fractional.tex}
+
+\input{integral.tex}
+
+\input{simulation.tex}
+
+\input{conclusion.tex}
+
+\bibliography{ref}{}
+%\vspace{-2.8mm}
+\bibliographystyle{ieeetr}
+%\newpage
+%{\color{white}...}    
+%\newpage
+\input{bio.tex}
+%\newpage
+%\pagenumbering{gobble}
+%\input{app.tex}
+
+
+\end{document}

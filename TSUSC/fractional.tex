@@ -1,0 +1,245 @@
+\section{Fractional Revenue Model}
+		\label{sec:fractional}
+
+%\subsection{Overview of Fractional Revenue Model}
+%\label{sec:frac.overview}				
+		%In the previous section, we devised an approximation algorithm for the integral revenue model in which it is assumed that the obtained revenue is zero if the allocated resource is less than the demand. Although this assumption is reasonable in some scenarios, 
+%To develop a solution for the \MCSP, we first consider fractional revenue model.
+%However, algorithms for integral revenue model cannot achieve the same performance as the algorithms of this section i.e., \fcs and \focs. 
+
+In the fractional model, the revenue of the CS from EV $i$ is directly proportional to the amount of resource that the EV is received, i.e.,
+		\begin{equation}
+			v_i^{\mathsf{f}}=\frac{\sum_t y_i^t}{D_i}v_i,
+			\label{Eq:partial_value}
+		\end{equation}
+		where $v_i$ is the gain, if the entire demand $D_i$ is fulfilled and $v_i^{\mathsf{f}}$ is the fractional gain.  
+%Under fractional revenue model and without the binary variable of selecting EVs, the underlying problem turns into a linear one. 
+We propose a simple algorithm, called \fcs, with low computational complexity \rev{ of $O(n^2T+nT^2)$} for the fractional model that finds the optimal solution in offline setting. Note that even though linear programs can be solved in polynomial time in general, the complexity of our proposed algorithm is much lower than the general linear program algorithms. Moreover, our proposed offline algorithm applies a valley-filling strategy to reduce the peak. 
+%The details of the proposed algorithm \fcs is given in~\cite{alinia2017online}. In the following, the online $2$-competitive algorithm is designed, where no exact information or stochastic modeling of future inputs of the problem is available. 
+A summary of proposed algorithms with their complexity is given in Table~\ref{tbl:algs}.		
+
+
+\subsection{Optimal Offline Design}
+\label{sec:fopt}	
+
+In this section, we propose an optimal algorithm for offline fractional model. As a natural solution, one may think of a greedy algorithm as follows: at each time slot, charge the EV(s) with highest unit-value and process others if only the remaining resource cannot be allocated to the selected EV(s) (e.g., due to maximum charging rate constraint or fulfillment of the EVs' demand). 
+This approach is a popular and straightforward method in the scheduling. However, it turns out that this approach cannot provide an optimal solution to the problem even in fractional revenue model. In fact, this solution is only 2-approximation (i.e., the profit obtained by the algorithm would be $1/2$ of the optimum). As an intuition of the proof think of two EVs in a single charging station with power capacity $p$ and $\frac{v_1}{D_1}-\frac{v_2}{D_2}=\epsilon$  where $\epsilon > 0$ is an arbitrary small number, $a_1=a_2=1, d_1=2, d_2=1$ and $D_1=D_2=k_1=k_2=p$. Then, applying the simple greedy, EV 1 will be selected at time slot 1 and EV 2 will have no chance to get charged due to its deadline constraint while EV 1 could wait until time slot 2 and still receive all its demand.
+	
+We refer the proposed algorithm in this secion as the \fcs and summarize it as Algorithm~\ref{alg:optimal-off}.
+The \fcs works in two phases. In the first phase (Section~\ref{sec:ph1}), the algorithm decides on the amount of resource to be allocated to each EV within its availability window and reserves resources accordingly. In this phase, the details of allocation is not known. The actual resource allocation is done in the second phase (Section~\ref{sec:ph2}) by setting variables $y_i^t$.
+
+Before discussing the details of the algorithm, we give formally define the notion of ``super interval'' to facilitate our algorithm design.
+
+\begin{defi}
+	Time interval $[\delta,\delta']$ is a ``super interval'' for interval $[t,t']$ if $1\leq \delta\leq t \text{~AND~} t' \leq \delta'\leq T$.
+	Moreover, $\mathcal{I}_{t,t'}$ is the set of all super intervals of interval $I_{t,t'}$ i.e., ${\mathcal{I}_{t,t'}=\{[\delta,\delta']: 1\leq \delta\leq t \text{~AND~} t'\leq \delta'\leq T\}}$.
+\end{defi}
+
+%		For example, $\mathcal{I}_{1,1}=\{I_{1,1},I_{1,2},I_{1,3},\dots ,I_{1,T}\}$. 
+The number of super intervals of an interval is at most $T^2$ and at least one (for interval $[1,T]$). 
+
+Let $R_i$ be the amount of resource that is reserved for EV $i$ by the \fcs and $I_{t,t'}$ as time interval $[t,t']$.
+% with $t,t'\in\{1,\dots ,T\}$ which includes time slots $t,t+1,\dots ,t'$. 
+Then, assuming that charging demands are sorted in non-increasing order of their unit values, $A^i_j(t,t')$ is the aggregate residual resource in interval $I_{t,t'}$ at station $j$ assuming that the reservation for EVs $1$ to $i$ is accomplished. We now explain in detail each phase of the algorithm. 
+
+
+\subsubsection{Phase I-Reservation\label{sec:ph1}} In Line~\ref{algline:sort1}, the EVs are sorted in a non-increasing order of their unit values.  
+%		i.e., ${v_1\slash D_1\geq v_2\slash D_2\geq\dots \geq v_n\slash D_n}$. 
+In Line~\ref{algline:setR}, the \fcs processes demand of EV $i$, picked from top of the ordered list, and sets $R_i$ as the amount to be reserved for EV $i$ which will be allocated in Phase II. In Line~\ref{algline:seta}, the residual resource of all intervals in set $\mathcal{I}_{a_i,d_i}$ decreases by $R_i$ and EV $i$ is added to the set of selected EVs.
+
+
+\begin{algorithm}[t]%\small%1
+	%\footnotesize
+	\revv{
+	\caption{\fcs}
+	\label{alg:optimal-off}
+	\DontPrintSemicolon 
+	\KwIn{$n$ EVs with their profile, local and global peak constraints $p_j, j=1,\dots ,m$ and $p^\mathsf{total}$ }
+	
+	\KwOut{Optimal scheduling under fractional model}
+	\BlankLine
+	
+	Sort charging requests in non-increasing order of their unit values, i.e., $\frac{v_1}{D_1}\geq \frac{v_2}{D_2}\geq\dots \geq \frac{v_n}{D_n}$\label{algline:sort1}
+	
+	%	\slash\slash\textit{\texttt{Use sorted list to process demands}}
+	
+	$\mathcal{L}\leftarrow \emptyset$ 	
+	
+	\slash\slash\textit{\texttt{Phase I}}
+	
+	
+	\For{$i=1,\ldots, n$}{
+		%\slash\slash\textit{\texttt{update demand and value}}
+		
+		$R_i \leftarrow \min\{D_i, \min\limits_{t,t'} A^{i-1}_{h(i)}(t,t'), \forall t,t': I_{t,t'}\in\mathcal{I}_{a_i,d_i}\}$\label{algline:setR}
+		
+		\If{$R_i>0$}{
+			$A^{i}_{h(i)}(t,t')\leftarrow A^{i-1}_{h(i)}(t,t')-R_i, \forall t,t': [t,t']\in\mathcal{I}_{a_i,d_i}$ \label{algline:seta}\\
+			$\mathcal{L}\leftarrow \mathcal{L}\cup{i}$
+	}}
+	\slash\slash\textit{\texttt{Phase II}}
+	
+	Sort EVs in $\mathcal{L}$ in increasing order of their charging flexibility i.e., $\frac{(d_i-a_i+1)k_i}{D_i}, i\in \mathcal{L}$. 
+	
+	%	Let $i$ be the index of $i^{th}$ EV in list $\mathcal{L}$
+	
+	\For{$i=1,\ldots, |\mathcal{L}|$}{
+		
+		Pick EV $i$ from the sorted list $\mathcal{L}$. 
+		
+		$\emph{feasible}\leftarrow \big(\sum_{t=a_i}^{d_i}\min\{k_i,A^{i-1}_{h(i)}(t,t)\}\big) - R_i$
+		
+		\If{feasible $<0$}{
+			Re-allocate previously allocated EVs such that $\emph{feasible}\geq 0$
+		}
+		Arbitrarily allocate $R_i$ to EV $i$ in its availability window\label{algline:fcsallocate}	
+	}}
+\end{algorithm}
+
+
+
+\begin{lem}
+	Provided that for EV $i$ we have 
+	\bee
+	\label{eq:ri}
+	R_i\leq\min\left\{D_i, \min_{t,t'} A^{i-1}_j(t,t'), \forall t,t': I_{t,t'}\in\mathcal{I}_{a_i,d_i}\right\}
+	\eee
+	 with a dummy $A^0_j(t,t')$ defined as
+$A^0_j(t,t')=(t'-t+1)\times\min \{p^\mathsf{total},p_{j}\},$
+	then there is a feasible allocation to allocate $R_i$ to EV $i$ in its availability window $[a_i,d_i]$. 
+	\label{thm:R_feasible}
+\end{lem}
+
+
+In Lemma \ref{thm:R_feasible}, $A^0_j(t,t')$ indicates the available resource when no charging request is processed in $I_{t,t'}$. 
+In Eq.~\eqref{eq:ri}, the second term, i.e., $\min_{t,t'} A^{i-1}_{j}(t,t')$, indicates the minimum remaining resource in all super intervals of interval $I_{a_i,d_i}$. For $i\geq 1$, $A^i_j(a_i,d_i)$ is defined as follows:
+
+\begin{equation*}
+A^i_j(a_i,d_i)=\begin{cases}
+A^{i-1}_j(a_i,d_i)-R_i & j=h(i),\\
+A^{i-1}_j(a_i,d_i) & j\neq h(i).
+\end{cases} 
+\end{equation*}
+
+The optimal value of $R_i, i=1,\dots ,n$ is set according to the following lemma:
+
+\begin{lem}
+	Given $n$ EVs sorted in a non-increasing order of the unit values, ${v_1\slash D_1\geq v_2\slash D_2\geq\dots \geq v_n\slash D_n}$, and the value of $R_i$, where $R_i$ is set after $R_{i-1}, i=2,\dots ,n$ by Eq.~\eqref{eq:ri}, then, 
+	$$R_i = \min\left\{D_i, \min_{t,t'} A^{i-1}_{h(i)}(t,t'), \forall t,t':I_{t,t'}\in\mathcal{I}_{a_i,d_i}\right\},\forall i,$$
+	is the optimal value for $R_i$. 
+	\label{thm:R_star}
+\end{lem}
+
+\subsubsection{Phase II- Allocation\label{sec:ph2}} Lemma~\ref{thm:R_feasible} shows that there is a feasible scheduling to allocate the reserved resources.
+However, despite its feasibility, it is not straightforward to find such \revv{a schedule}. For example, assume that for EV $i$, $R_i=10$ and $k_i=4$. It is possible that all available resources are concentrated in a single time slot but EV $i$ cannot use more than $4$ kWh of it. In this situation, the previously allocated resources in interval $I_{a_i,d_i}$ should be re-allocated such that the concentrated resources are \emph{dispersed} and we have $\sum_{t=a_i}^{d_i}\sigma_t \geq R_i$ where $\sigma_t =\min\{k_i,A^{i-1}_{h(i)}(t,t)\}$ is the maximum resource that can be allocated to EV $i$ at time slot $t$. Since the total amount of allocated resource does not change in the interval, such dispersion is possible and can be done by a simple algorithm in which allocates $\min\{k_i,A^{i-1}_{h(i)}(t,t)\}$ starting from time slot $t=a_i$ until $R_i$ units is allocated. To further reduce the peak of the system, we will develop \sa\ algorithm (See Section \ref{sec:integral}) which acts more intelligent so that Line \ref{algline:fcsallocate} of the \fcs can be replaced by ``Run \sa$(i,R_i)$''.
+
+
+
+\begin{thm}
+	\label{cor:1}
+	\fcs is an optimal solution under fractional revenue model.
+\end{thm}
+
+The following theorem characterizes the complexity of \fcs.
+
+\begin{thm}
+	\label{thm:complexity}
+	The time complexity of \fcs algorithm is $O(n^2T+nT^2)$ where $n$ is the number of EVs and $T$ is number of time slots.
+\end{thm}
+
+
+%\vspace{-4mm}
+\subsection{Online Scenario}
+\label{sec:fonline}
+In this section, we devise an algorithm for the scenario that EVs arrive in online fashion. The scheduling decisions at each time slot are made given the information of available EVs and neither exact values nor stochastic modeling of future arrivals is available. Our goal is to obtain a \emph{competitive ratio} for the online algorithm. A scheduling algorithm $\mathcal{A}$ is $c$-competitive for $c\geq 1$ if the revenue obtained by the optimal offline algorithm is at most $c$ times the algorithm $\mathcal{A}$'s revenue for any input sequence~\cite{borodin2005online}.
+
+The proposed online algorithm for the fractional model, referred to as \focs, is listed as Algorithm~\ref{alg:focs}. The \focs is a simple yet efficient algorithm that always selects EVs with highest unit value to allocate as follows. First, the algorithm sorts the available EVs at each time slot~$t$ based on their unit value (Line~\ref{algline:sort}). \revv{In this step, the algorithm breaks ties based on EVs' deadline i.e., if two EVs have the same unit value, then the one with earliest deadline comes first in the sorted list.} Next, the \focs selects one EV at a time from the sorted list to allocate with maximum charging rate considering the EV's remaining demand, maximum charging rate, and peak constraints (Lines~\ref{algline:focsfor}-\ref{algline:focssety}). The allocation is continued until all resources are allocated or there is no more EV that could be allocated. 
+%For unselected EVs, the value of $y_i^t$ will be $0$ in Line \ref{algline:focssety} of the algorithm. 
+The time complexity of the \focs is $O(n^2T)$, determined by cost of its ``\textbf{for}'' loop multiplied by total number of times that the algorithm needs to be run.
+% i.e., $T$. 
+
+%\vspace{-4mm}
+\begin{algorithm}%\small%1
+\footnotesize
+\caption{\focs: $\forall t\in \{1,2,\dots ,T\}$}
+\label{alg:focs}
+\DontPrintSemicolon 
+%\KwIn{Available EVs at time slot $t$, number of CSs $m$, local peak constraint $p_j, j=1,\dots ,m$, global peak constraint $p^{\textrm{total}}$}
+
+%\KwOut{A feasible charging scheduling}
+
+%$\backslash\backslash\texttt{Initialize:}$
+
+\BlankLine
+
+$\mathcal{M}^t\leftarrow$ The set of available EVs that not received their entire demand by $t$ 
+
+Sort EVs in set $\mathcal{M}^t$ indexed by $i=1,\dots ,|\mathcal{M}^t|$: $v_1/D_1\geq v_2/D_2\geq\dots\geq v_{|\mathcal{M}^t|}/D_{|\mathcal{M}^t|},$  \revv{where ties are broken based on users' deadline (giving priority to the users with earliest deadline) }\label{algline:sort}
+
+\For{$i=1,\ldots,|\mathcal{M}^t|\label{algline:focsfor}$}{
+
+$y_i^t\leftarrow \min\{k_i,D_i-\sum_{\tau=a_i}^{t}y_i^{\tau},p_{h(i)}-\sum_{i':h(i')=h(i)}y_{i'}^t,p^{\textrm{total}}-\sum_{i'}y_{i'}^t\}$ \label{algline:focssety}
+
+}
+
+\end{algorithm}
+Despite the simplicity of \focs which makes it easy to implement, its performance is sound and within a constant factor of the offline optimum. We now proceed to analyze the performance of the \focs by first giving some preliminaries. 
+
+Fix an optimal scheduling and let $\mathcal{S}_{\focs,t}$ and $\mathcal{S}_{\opt,t}$ be the sets of EVs selected by the \focs and optimal solution at time slot $t$, respectively. Let $y_{i}^t$ and $z_{i}^t$ be the charging rate of EV $i$ set by \focs and \opt, respectively. We define $\Delta_{i}^t$ as follows:
+\begin{equation}
+\label{eq:delta}
+\Delta_{i}^t =
+     \begin{cases}
+       \min\{z_{i}^t-y_{i}^t,r_{i,t}\} &\quad i\in\mathcal{S}_{\opt,t},z_{i}^t>y_{i}^t, \\
+       0& \quad\text{otherwise},  \\
+     \end{cases}
+\end{equation}
+where $r_{i,t}$ is the remaining demand of EV $i$ by the end of time slot $t$. $\Delta_{i}^t>0$ indicates that the optimal algorithm allocated $\Delta_{i}^t$ units more resources to EV $i$ than the \focs by time slot $t$ that could be \emph{feasibly} allocated by \focs to the EV $i$. If for any EV $i\in\mathcal{S}_{\opt,t}$ and time slot $t\in\mathcal{T}$ we have $y_{i}^t=z_{i}^t$, i.e., $\Delta_{i}^t=0$, then the \focs is obviously optimal because it gains whatever the optimal solution gains. \rev{We define \textit{loss} of the \focs imposed by EV $i$ as follows:
+\begin{equation}
+\label{lBj0}
+l_{i,t}=\Delta_{i}^t\frac{v_i}{D_i},
+\end{equation}
+
+Note that the loss always takes a non-negative value as $\Delta_i^t\geq 0$.} When \focs sets charging rate of an EV less than its rate in the optimal solution, it gains $\Delta_{i}^t v_i/D_i$ less than the optimal solution from that EV. An upper bound for the distance between the optimal objective value (denote by \opt) and the revenue of the \focs (denote by \alg) is summation of the losses over all time slots and all EVs, i.e., 
+\begin{equation}
+\label{eq:optdist}
+\opt-\alg\leq \sum_{t=1}^T\sum_{i\in\mathcal{S}_{\opt,t}} l_{i,t}.
+\end{equation}
+
+%Notice that it is possible that an algorithm does not choose any selected EV by a particular optimal solution but still provide an optimal or near-optimal solution as there can be multiple optimal solutions. In particular, $\mathcal{S}_{\focs,t}\cap \mathcal{S}_{\opt,t}=\emptyset, \forall t$ cannot lead to any conclusion on the competitive ratio of the \focs. 
+In addition to the amount of loss, the gain of the algorithm from charging alternative EVs should also be taken into account in comparison between \opt and \alg. 
+
+Let $i\in\mathcal{S}_{\opt,t}$, $i\notin\mathcal{S}_{\alg,t}$ and $g_{i,t}$ be the gain that the \focs obtains from charging another EV instead of $i$ at time slot $t$. We are going to show that in the \focs, for each EV $i$ with $l_{i,t}>0$ there must be another EV (denote by $i'$) where $y_{i'}^t\geq \Delta_i^t$ and $\frac{v_{i'}}{D_{i'}}\geq \frac{v_i}{D_i}$ which means in resource allocation phase for EV $i$, the \focs allocated the difference $\Delta_i^t$ to another EV with the same or higher unit value. This can be proved by considering the fact that (i) the selected EVs have higher unit values than the unselected EVs, and (ii) the charging rate of the selected EVs are set to the maximum feasible value. Moreover, the \focs is \emph{``work-conserving''} i.e., it does not let any resource remain unused if there are some EVs that can use it. 
+
+Let $g_{i,t}$ denote the gain that \focs obtains from allocating the same amount of resource that optimal algorithm allocated to EV $i$ (with size $z_i^t$) to another EV(s).
+If $\Delta_{i}^t=0$, the loss is zero. If $\Delta_{i}^t>0$, then by the charging strategy that the \focs uses we can conclude that (i) $i$ is not finished by the \focs, and (ii)
+\rev{no more resources from station $p_{h(i)}$ can be feasibly allocated,} otherwise, the \focs could allocate more resources to EV $i$. Therefore, the $\Delta_{i}^t$ units of the resource \rev{are} allocated to one or multiple other EVs (denote them by set $\mathcal{J}_i^t$) by the \focs. Moreover, it must hold that all the EVs in set $\mathcal{J}_i^t$ have a unit value equal to or higher than $v_i/D_i$ which yields $g_{i,t}\geq l_{i,t}$, otherwise, the \focs should not prefer the EVs in $\mathcal{J}_i^t$ to $i$. \rev{Since the result holds for any arbitrarily EV $i$, we can get the following:}
+
+\begin{equation}
+\label{eq:lg}
+\sum_{i=1}^n\sum_{t=1}^Tl_{i,t}\leq\sum_{i=1}^n\sum_{t=1}^Tg_{i,t}.
+\end{equation}
+
+Moreover, the total gain of \focs, i.e., \alg, is equal to sum of its gains from each single EV:
+\begin{equation}
+\label{eq:ALG}
+\rev{\alg= \sum_{i=1}^n\sum_{t=1}^Tg_{i,t}.}
+\end{equation}
+
+With the above discussion and using Eqs. (\ref{eq:optdist}), (\ref{eq:lg}) and (\ref{eq:ALG}) we are able to derive a competitive ratio of $2$ for the \focs. 
+
+\begin{thm}
+	\label{thm:focscompetitive}
+	The \focs is $2$-competitive.
+\end{thm}
+
+
+
+\emph{Remarks:} When there is only one CS and EVs have no limit on their charging rate, the \focs is identical to the \textsc{FirstFit} algorithm ~\cite{firstfit} which is known to be $2$-competitive for classic job scheduling problem. However, the charging rate limitation is crucial for EV charging problem. Moreover, \cite{firstfit} uses \revv{a} ``charging argument'' to prove the competitive ratio of the proposed algorithm which cannot be directly applied to our problem. Thus, the \focs extends the \textsc{FirstFit} and makes it practical for the EV charging scenario. Moreover, the proof technique used for the competitive analysis of the \focs is fundamentally different from the one used in \cite{firstfit}. 
+%%%Finally, in~\cite{Robu} an online $2$-competitive algorithm for EVs with partial charging is proposed. The competitive ratio obtained assuming that charging of EVs is instantly reversible at departure times. This assumption is not practical in reality since similar to charging phase, there is a discharging rate constraint for EVs.
+
+%\begin{thm}
+%\label{thm:focscomplexity}
+%
+%The time complexity of \focs is $O(nT\log n)$.
+%\end{thm}

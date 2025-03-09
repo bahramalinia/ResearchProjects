@@ -1,0 +1,305 @@
+\section{Integral Revenue Model}
+		\label{sec:integral}
+%
+%		\subsection{Overview of Integral Revenue Model}
+%		\label{sec:intoverview}
+		The MILP form of the \MCSP in integral model is a generalized form of the $0/1$-knapsack problem which is a well-known NP-hard problem. \rev{To give an intuition, consider the scheduling problem in a single time slot (i.e, $T=1$). Then, allocating power resources to the EVs is equivalent to allocating the capacity of knapsack to the items. }	
+		In Section~\ref{subsec:icsalgorithm}, we propose a fast polynomial time offline approximation algorithm for the integral problem. In Section~\ref{sec:onlineint}, we extend the result and propose an online algorithm for the integral model.
+%		, where the EVs arrive in slot-by-slot fashion, and the scheduler has no information of the future arrivals. 
+		
+%The problem is even more challenging when the uncertainty in EVs' arrival is taken into account. At each time slot, the scheduler has no information of unit values of the future charging profiles. Therefore, the scheduler cannot make sure about the efficiency of its current charging decision.
+%It can be shown that when there is no assumption on the charging profiles of EVs (including the value of slackness parameter) and the charging decision , no online algorithm can provide a performance guarantee meaning that in the worst case, the ratio of the optimal objective value to the one obtained by the online algorithm can be arbitrary small. In fact, when the online algorithm selects
+		
+		\subsection{Offline Scenario}   
+		\label{subsec:icsalgorithm}
+		We design our offline scheduling algorithm under integral model referred to as \ics, to solve the \MCSP approximately. 
+%		Our algorithm design is inspired by the basic algorithm proposed in \cite{Jain}. The algorithm in \cite{Jain} works for a single CS where arrival time of all EVs are the same and there is no global peak constraint. 
+Since the performance analysis of the proposed algorithm relies on a dual fitting method and utilizes weak duality property, \revv{we first need to construct the dual problem of \MCSP. Toward this, we introduce variables $\alpha, \beta, \gamma$ and $\pi$. Generally, in primal-dual approximation algorithm design, each constraint (resp. variable) in primal (resp. dual) problem is associated with a variable (resp. constraint) in dual (resp. primal) problem. In our case, constraints (\ref{ConstPartial}) (\ref{ConstTotal}), (\ref{ConstLocal}) and (\ref{ConstSpeed}) in the \MCSP are respectively associated with dual variables $\alpha, \beta, \gamma$ and $\pi$ (for more details see \cite{approx}). The dual problem is formulated as follows:}
+		\bse
+		\bee
+		\min &&\sum_{i=1}^n D_i\alpha _i + \sum_{j=1}^m \sum_{t=1}^T p_j\beta (t)+\sum_{t=1}^T p^\mathsf{total}\gamma (t)\nonumber\\ 
+		\textrm{s.t.} && \alpha _i+\beta (t) +\gamma _i + \pi (t)- \frac{k_i}{D_i}\sum_{t'=a_i}^{d_i} \pi _i(t^\prime) \geq \frac{v_{i}}{D_i},\label{ConstDcover} \nonumber\\
+		&& \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\forall i, t\in [a_i, d_i],\\
+		\textrm{vars.}&&\alpha _i, \beta _i, \gamma,  \pi _i(t)\geq 0,\quad\quad\forall i,t. \nonumber
+		\eee
+		\ese
+
+		
+		%%%In this section, we explain \ics in details and then in Section~\ref{subsec:analysis}, we analyze approximation factor of the algorithm. The \ics algorithm is listed as Algorithm~1.
+		
+		\subsubsection{Explanation of the Main Algorithm} 
+		\label{sec:icsexplanation}
+		Our algorithm design is inspired by the basic algorithm proposed in \cite{Jain}. \revv{The algorithm in~\cite{Jain}, however, works for a single CS where arrival time of all EVs are the same and there is no global peak constraint.}
+		The \ics algorithm (listed as Algorithm \ref{alg:ics}) works in two phases. In the first phase it sorts the charging requests based on their unit values in a non-increasing order. Then, it selects most valuable demand. If the remaining resource is enough to cover the \emph{entire} demand of the EV, it is admitted to receive the demand (Lines~$6$-$7$). 
+%		When \ics processes EV $i$, the algorithm checks for the feasibility of allocating $D_i$ units of the resource within its availability window $[a_i,d_i]$ without violating the constraints related to the maximum charging rate $k_i$, local and global peaks (Lines~$6$-$8$).	 	
+		
+		\emph{Scheduling of the Selected EV:} \revv{If the feasibility check passed (Line 6 in Algorithm 3)}, \ics calls sub-procedure \sa\ to allocate required resources in interval $[a_i,d_i]$. Then, $\alpha _i$ is set to $v_i\slash D_i$ in order to cover dual constraint in Eq.~\eqref{ConstDcover} (Lines~$7$-$8$). 
+		
+		In \sa, 
+		%%%When EV $i$ is selected to get charged, \sa\ is called for the charging scheduling. 
+		let us define $W(t,h(i))=\sum_{i': h(i')=h(i)} y_{i'}^t$ as total workload at time slot $t$ in CS $h(i)$ and $\bar{W}(t,h(i))$ as total available load to allocate at time slot $t$ for CS $h(i)$. We always have ${\bar{W}(t,h(i))+W(t,h(i))=p_{h(i)},  \forall t, i}$. For scheduling, \sa\ applies two main policies: 1) \emph{valley-filling} and, 2) \emph{right-to-left allocation}. \revv{With valley-filling, the slots with more available resources are preferred which helps to reduce the peak of the system.} %%%It also can be seen as a smoothing method which tries to reduce the variance of the allocated resources at different slots. 
+%				The simulation results in Section \ref{sec:simul} will confirm this claim. 
+				Right-to-left allocation is used when two or more time slots are equal in terms of their remaining resources. 
+%				When this policy applies on scheduling of EV~$i$, any EV~$i'$ with $i'>i$ and $d_{i'}<d_i$ has more chance to get charged since the algorithm tends to charge EV $i$ in interval $[d_{i'}+1,d_i]$ (i.e., right hand part of the EV's availability window) and keeps resources in $[a_{i'},d_{i'}]$ for EV $i'$. 
+A ranking based approach is used to apply the aforementioned policies. 
+		To charge  EV $i$, \sa\ ranks time slots in interval $[a_i,d_i]$. Then, charging is done by allocating resources from the higher ranked time slot to lowest one. The rank of a time slot $t$ is calculated based on remaining resources in the time slot (valley-filling) and value of $t$ (right-to-left allocation). 
+		
+		\begin{algorithm}%\small%1
+			\footnotesize
+			\caption{\ics}
+			\label{alg:ics}
+			\DontPrintSemicolon 
+%			\KwIn{$n$ EVs with $a_i, d_i, v_i, D_i,$ and $k_i$ associated with each EV $i$, $m$ CSs, local and global peak constraints $p_j, j=1,\dots ,m$, and $p^\mathsf{total}$}
+			
+%			\KwOut{A feasible scheduling of EVs}
+			\BlankLine
+			%\begin{algorithmic}
+			
+			%\slash\slash\textit{\texttt{Initialization}}
+			\textbf{initialize}: $y\leftarrow 0, \alpha\leftarrow 0, \beta\leftarrow 0, \gamma\leftarrow 0, \pi\leftarrow 0$
+			
+			Sort charging requests in non-decreasing order of their unit values: $v_1/D_1 \geq v_2/D_2\geq\dots \geq v_n/D_n$
+%			$\frac{v_1}{D_1} \geq \frac{v_2}{D_2}\geq\dots \geq \frac{v_n}{D_n}$
+%			\slash\slash\textit{\texttt{Use sorted list to process demands}}
+			
+			\For{(i=1\dots n)}{				
+
+				\For{$t=a_i\dots d_i$}{
+					$\sigma_t\leftarrow  \min\Big\{p_{h(i)}-\sum_{i':h(i')=h(i)}y_{i'}(t),$ \newline $\qquad p^\mathsf{total}-\sum_{i'=1}^n y_{i'}^t,k_i\Big\}$
+					
+				}
+				
+				
+%				\slash\slash\textit{\texttt{if enough resources remain for EV $i$}}
+
+				\If{$D_i\leq\sum_{t=a_i}^{d_i}\sigma_t$}
+				{
+					\sa($i,D_i$)\\
+					$\alpha _i\leftarrow v_i/ D_i$
+				}
+				\Else {
+					\If{$(\beta (d_i)=0)$}{
+						\bc($i$)}
+				}
+			}
+			
+			\For{(i=1\dots n)}{ 
+				\If {EV $i$ is not selected}{
+					\rc($i$);
+				}
+			}
+			%\end{algorithmic}
+		\end{algorithm}
+	
+		
+\emph{Dual Feasibility of the Non-selected EVs:} If remaining power resource is not enough to fully charge EV $i$, i.e.,  $D_i>\sum_{t=a_i}^{d_i}\sigma_t$, the EV cannot be selected. However, we still need to satisfy constraint~\eqref{ConstDcover} in dual problem which is done by calling \bc($i$). To cover the constraint~\eqref{ConstDcover} for EV $i$, sum of dual variables for all $t\in [a_i ,d_i]$ should be greater than or equal to ${v_i \slash D_i}$. \bc($i$) sets $\beta (t)$ to ${v_i \slash D_i}$ for all time slots $t$ in interval $[t_\mathsf{cov}, R(d_i)]$ (Lines $3$-$4$ of Algorithm~\ref{alg:betacover}). Observe that  ${\beta (t^\prime)\geq v_i \slash D_i,\forall t^\prime< t_\mathsf{cov}}$ (with $ t_\mathsf{cov}>1$) considering that the demands are sorted in a non-increasing order of the unit-values and $\beta (t')$ is already set to ${v_{i'} \slash D_{i'}}$ when processing the earlier charging demand of EV $i'$ which is not selected. Hence, ${v_{i'}\slash  D_{i'}\geq v_i \slash D_i}$, thereby ${\beta (t)\geq v_i \slash D_i,}$ and the dual constraint in~\eqref{ConstDcover} is satisfied.		
+		Lines $1$-$4$ of \bc\ is enough to cover the dual constraint. However, the algorithm continues in Lines $5$-$8$ by setting a variable $\Phi_{i'}(t)$ for time slots $t=1,\dots ,R(d_i)$ to a value dependent to amount of the resource that a selected EV $i'$ received at slot $t$. $\Phi_{i'}(t)$ will be used in approximation analysis of the main algorithm and has no effect on the scheduling of EVs. 
+		%We borrowed algorithm \bc($i$) from \cite{Jain} and adjusted it for multiple station mode.		
+%		\vspace{-3mm}
+		\begin{algorithm}%\small%1
+			\footnotesize
+			\caption{\sa($i,D_i$)}
+			\label{SmartAllocate}
+			\DontPrintSemicolon 
+			\KwIn{EV $i$ to receive $D_i$ from CS $h(i)$}
+			
+			Rank time slots in interval $[a_i,d_i]$ such that for any $t_1$ and $t_2$:
+			$\mathsf{rank}(t_1)> \mathsf{rank}(t_2)$ iff $\bar{W}(t_1,h(i))>\bar{W}(t_2,h(i))$ OR $\bar{W}(t_1,h(i))==\bar{W}(t_2,h(i)) \wedge t_1>t_2$ 
+			
+			\While {$\sum_{t'=a_i}^{d_i}y_i^{t'}\neq D_i$}{
+				
+				Select time slot $t$ with highest rank which is not selected before
+				
+				Allocate $\min \left\{k_i,\bar{W}(t,h(i)),D_i-\sum_{\tau=a_i}^{t}y_i^{\tau},p^{\textrm{total}}-\sum_{i'}y_{i'}^t\right\}$ to EV $i$ at $t$
+				
+			}
+		\end{algorithm}	
+%		\vspace{-7mm}	
+		\begin{algorithm}%\small%1
+			\footnotesize
+			\caption{\bc($i$)}
+			\label{alg:betacover}
+			\DontPrintSemicolon 
+			%\KwIn{EV $i$ which is not selected to charge}
+			
+			\BlankLine
+			
+			$t_\mathsf{cov}\leftarrow \min \{t: \beta (t)=0\}$
+			
+			$R(d_i)=\max \{t\geq d_i : \forall t^\prime\in (d_i,t], \bar{W}(t^\prime)<q_{h(i)} \}$
+			
+			\For{$(t=t_\mathsf{cov}\dots R(d_i))$}{
+				$\beta (t)\leftarrow v_i/D_i$
+			}
+			
+			\For{$(t=1\dots R(d_i))$}{
+				\For{$(i'=1\dots n))$}{	
+					\If{$y_{i'}^t>0 \wedge \Phi_{i'}(t)=0$}{
+						$\Phi_{i'}(t)\leftarrow\big[ \frac{p_{h(i)}}{p_{h(i)}- k_i}\frac{s}{s-1}\big] .\frac{v_i}	{D_i}y_{i'}^t$
+					}
+				}
+			}
+		\end{algorithm}
+%		\vspace{-7mm}
+		\begin{algorithm}%\small%1
+			\footnotesize		
+			\caption{\rc($i$)}
+			\label{Replace}
+			\DontPrintSemicolon 
+%			\KwIn{EV $i$}
+%			\KwOut{Updated schedule}
+			
+			$\mathcal{L} \leftarrow \emptyset$\\			
+			$v_\mathsf{inc}\leftarrow v_i$\\			
+			$\sigma_t\leftarrow 0, t=a_i,\dots ,d_i$
+			
+			%Define $\delta_i(t)=\min \{k_i,\bar{W}(t,h(i))\}$ 
+			
+			%$\Delta\leftarrow \sum_{t=a_i}^{d_i}\min\{\bar{W}(t,h(i)), k_i\}$
+			
+			\For{($i' =i-1\dots 1$)}{ 
+				\If {EV $i'$ is selected $\wedge (h(i')=h(i)) \wedge (v_\mathsf{inc}-v_{i'})>0$}{
+					Add EV $i'$ to list $\mathcal{L}$	
+					
+					$v_\mathsf{inc}\leftarrow v_\mathsf{inc}-v_{i'}$
+					
+					\For{($t=a_i\dots d_i$)}{
+						$\sigma _t\leftarrow\sigma_t + \min\{k_i,y_{i'}^t\}$
+					}
+				}
+			}
+			
+			\If {$\sum_{t=a_i}^{d_i}\sigma_t\geq D_i$}{
+				Remove EVs in list $\mathcal{L}$ from charging schedule 
+				
+				\sa($i,D_i$)
+			}
+		\normalsize
+		\end{algorithm}
+		
+		\emph{Improving the Gain:} In the second phase, the \ics tries to increase total value of selected EVs by calling \rc($i$) on every unselected EV $i$ (Lines~$12$-$14$).  \rev{The \rc(i) (listed as Algorithm $6$) checks that whether the total revenue can be increased by replacing some selected EVs with EV $i$ or not (Lines $4$-$9$). If such EVs are found, the algorithm stops their charging and allocates EV $i$ using \sa\ (Lines $10-12$).} 
+		%We refer to ~\cite{alinia2017online}, for the details and intuition behind this algorithm. 
+%		Before giving the details of \rc($i$), we first explain the intuition behind this algorithm. 
+%		 Note that if in the scheduling problem we set $T=1, m=1, k_i=p^\mathsf{total}, a_i=d_i=1\ \forall i$, then the problem is equal to the well-known $0$-$1$ knapsack problem~\cite{approx}. In the knapsack problem, a widely used greedy approach sorts items based on their unit values and selects items accordingly. It turns out that in this approach the approximation factor can be arbitrarily bad. For example, consider a knapsack problem with two items with $v_1=2, v_2=p^\mathsf{total}, D_1=1$, and  $D_2=p^\mathsf{total}$. Given these values we have $v_1\slash D_1>v_2\slash D_2$. To maximize total value of selected items, the optimal solution chooses item $2$ while greedy algorithm selects item $1$ which results in a worst-case approximation factor of ${c \slash \opt}$ in general where $c$ is a constant (in this example $c=2$). To resolve it, one approach is to \emph{re-consider} unselected items after running greedy algorithm and replace some selected items in the knapsack with unselected ones and then check whether the result is improved or not. In a simple case, only the largest unselected item can be examined which makes a significant theoretical improvement by providing a worst case approximation factor of $\opt\slash 2$.
+%		 
+%\ics algorithm leverages the same idea but using a more intelligent replacing method called \rc($i$). \rc($i$) is called on every unselected EV $i$. It tries to find some selected EVs that if they are replaced by EV $i$, total revenue from the selected EVs increases. %%%When \ics calls \rc($i$) on all unselected EVs, an improvement in total revenue of final selected EVs is expected. 
+%This is confirmed by the simulation results in Section~\ref{sec:simul}.
+		
+		\subsubsection{Analysis}
+		\label{subsec:analysis}
+		In a primal-dual algorithm, the goal is to design an algorithm in a way that it produces a good solution for primal problem (with primal value $\Gamma$) and a feasible solution for the dual problem (with dual value $\Lambda$). Then, assuming that the primal problem is a maximization problem, to prove that the algorithm is $c-$approximation (for $c\geq 1$), the important part is to show that $\Lambda\leq c\Gamma$. Then, based on weak duality theorem we have $\Lambda\geq \opt$, and it is concluded that $\Gamma \geq \frac{1}{c}\times\opt$ where $\opt$ is the optimal value. 
+		Based on the above understanding, the following theorem scrutinizes the approximation ratio of the \ics assuming that arrival times are the same for all EVs. 
+%		First note that the designed scheduling algorithm outputs a feasible scheduling since it respects the constraints in the primal problem. Also, the algorithm produces a feasible solution for the dual problem by covering the dual problem constraint in (\ref{ConstDcover}) through setting $\alpha _i$ to $\frac{v_i}{D_i}$ when EV $i$ is accepted and, $\beta (t)$ to a value greater than or equal to $\frac{v_i}{D_i}$ for $t\in [a_i, d_i]$ (according to the discussion in Section \ref{sec:icsexplanation}) if EV $i$ is not selected. To obtain an approximation factor for the algorithm, it is enough to bound the total covering cost of the dual constraints.
+		
+		\begin{thm}
+			\label{thm:approx}
+			\ics algorithm is a $\Big( 1+ \sum_{j=1}^m {\frac{p_j}{p_j-q_j}}.\frac{s}{s-1}\Big)$-approximation when EVs have same arrival time.
+		\end{thm}
+%		
+%		\begin{proof}
+%			In Appendix~\ref{app:1}.
+%		\end{proof}
+		
+		Note that in the case that the system is flexible enough, i.e., $s\gg 1$, and the maximum charging rates of stations are much bigger than those of EVs, i.e., $p_j \gg q_j, \forall j$, the approximation ratio approaches $m+1$. And in the case that there is one single station, the approximation ratio is $2$.
+%		 Finally, we provide the time complexity of the \ics.
+
+%\begin{thm}
+%\label{thm:ics_complexity}
+%The time complexity of the \ics algorithm is $O(nT\log T+n^2T)$.
+%\end{thm}	
+%
+%\begin{proof}
+%In Appendix \ref{app:ics_complexity}.
+%\end{proof}
+
+	
+\subsection{Online Scenario}
+\label{sec:onlineint}
+Due to the binary selection variable, the online solution design under integral model is more challenging than the one for fractional model. We propose \iocs that is built upon the offline \ics. In particular, the \iocs calls the \ics at each time slot for the set of available EVs, however, any algorithm that is designed for offline integral model can be used alternatively. Hereinafter, $\mathcal{A}$ refers to the \ics or a similar algorithm.
+
+\begin{algorithm}%\small%1
+\footnotesize
+\caption{\iocs: $\forall t\in \{1,2,\dots ,T\}$}
+\label{alg:iocs}
+\DontPrintSemicolon 
+%\KwIn{$n$ EVs to arrive on the fly, number of CSs $m$, global peak constraint $p^{\textrm{total}}$, local peak constraints $p_j, j=1,\dots ,m$}
+
+%\KwOut{A feasible charging scheduling}
+
+\BlankLine
+
+Let $\mathcal{A}$ be an algorithm that solves the problem with $a_1=\dots =a_n$
+
+$\mathcal{R}^t\leftarrow$ set of EVs arrived at time slot $t$
+
+$\mathcal{M}^t\leftarrow \mathcal{R}^t\cup \{i: t\in\mathcal{T}_i\ \texttt{AND}\ \sum_{t^\prime}y_{i}^{t'}<D_i\}$ 
+
+%$\backslash\backslash\texttt{Schedule 1}$
+
+Based on the residual in interval $[t,T]$, use algorithm $\mathcal{A}$ to allocate EVs in set $\mathcal{R}^t$ assuming no further arrivals 
+
+$\mathcal{S}_{\iocs,t}\leftarrow\{i:i\in\mathcal{M}^t\ \texttt{AND}\ i$ is admitted at $t\}$
+
+$\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}\leftarrow \sum_{i\in\mathcal{S}_{\iocs,t}}v_i$
+
+Assume all reserved resources are freed at time slots $t, t+1, \dots, T$
+
+%$\mathcal{R}^t\leftarrow\mathcal{M}^t$
+
+%$\backslash\backslash\textsl{set of active EVs at time slot t}$
+
+$r_{i,t}\leftarrow$ remaining demand of $i$ at $t, \forall i$
+
+%$\backslash\backslash\texttt{Use modified demands values}$
+
+$D_i^\prime\leftarrow r_{i,t},\ \ v_i^\prime\leftarrow \frac{r_{i,t}}{D_i}v_i, \forall i\in\mathcal{M}^t$
+
+%$\backslash\backslash\texttt{Schedule 2}$
+
+Run $\mathcal{A}$ on $\mathcal{M}^t$ using $D_i^\prime$ and $v_i^\prime, \forall i$ and reconstruct $\mathcal{S}_{\iocs,t}$
+
+$\Gamma_{\mathcal{A},\mathcal{M}^t}\leftarrow \sum_{i\in\mathcal{S}_{\iocs,t}}v_i$ $\backslash\backslash\texttt{Use original values}$
+
+%$a\leftarrow\frac{V^\prime_{\textrm{total}}}{V_{\textrm{total}}}$
+
+\If{$\Gamma_{\mathcal{A},\mathcal{M}^t}>\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}$}{
+
+Use the second schedule
+
+}
+
+\Else{
+
+Use the first schedule
+
+}
+
+\end{algorithm}
+
+The \iocs is summarized as Algorithm~\ref{alg:iocs}. At slot $t$, the \iocs compares two scheduling results returned by $\mathcal{A}$ and chooses among them. In the first scheduling, the \iocs keeps all reserved resources in interval $[t,T]$ intact. Then, for utilizing the remaining resources, the algorithm runs $\mathcal{A}$ over arrived EVs at time slot $t$. In this case, the total revenue obtained by the \emph{active} EVs (i.e., EVs that are available but not received their entire demand yet) is denoted by $\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}$ (Line $6$ of the algorithm). In the second scheduling, the \iocs considers the case that it can sacrifice the previously admitted EVs by canceling their reservations and allocating the freed resources to more valuable demands. For this purpose, the algorithm modifies the demand and valuation of the previously admitted EVs such that each demand is replaced by the EV's remaining demand, and the valuation of the EV is proportionally calculated based on the remaining demand (Line $9$ of the algorithm) so that the unit values of EVs do not change. Then, the \iocs runs $\mathcal{A}$ on set of active EVs $\mathcal{M}^t$ where the corresponding gain is denoted by $\Gamma_{\mathcal{A},\mathcal{M}^t}$. If $\Gamma_{\mathcal{A},\mathcal{M}^t}>\widehat{\Gamma}_{\mathcal{A},\mathcal{R}^t}$, the \iocs forgets the previously admitted EVs and follows the second scheduling. 
+
+
+
+\begin{comment}
+%We now introduce some notations and then analyze the performance of \iocs. 
+Let $\mathcal{S}_{\iocs,t}$ and $\mathcal{S}_{\opt,t}$ be set of active EVs at time slot $t$ that are selected for charging by \iocs and \opt (fix a particular optimal solution), respectively. Note that the set of active EVs for \iocs and \opt might be different. 
+%Moreover, define  $\mathcal{U}_{\iocs,t}=\mathcal{S}_{\iocs,1}\cup\dots\cup \mathcal{S}_{\iocs,t}$ and $\mathcal{U}_{\opt,t}=\mathcal{S}_{\opt,1}\cup\dots\cup \mathcal{S}_{\opt,t}$. 
+Having $i\in\mathcal{S}_{\iocs,t}$ means that based on the updated schedule at time slot $t$, enough resources reserved for EV $i$ so that the EV will receive its demand $D_i$ before the deadline $d_i$. However, the schedule may change at each slot and $i\in\mathcal{S}_{\iocs,t}$ cannot be a guarantee for EV $i$ to fully receive its demand. In fact, users and the scheduler itself have to wait until the deadline of the EV to find out that the demand is fulfilled or not. This is because the scheduler may cancel some reservations in the next time slots and allocate the freed resources to other EVs.
+\end{comment}
+% (when Algorithm \ref{alg:iocs} uses the second schedule in Line $15$). 
+%Define $A_t$ as the minimum gain of \iocs when the algorithm visited time slots $1$ to $t$. More formally, $A_t=\sum_{i\in\mathcal{U}_{\iocs,t}}v_i$. $A_t$ is the minimum gain that \iocs will obtain by the end of time slot $t$, having the information of released demands up to time slot $t$. Notice that the algorithm may continuously improve its set of selected jobs to increase its gain such that $A_t\geq A_{t-1}, t\in\{2,\dots, T\}$. $A_t$ is formally defined as follows:
+
+The following theorem characterizes the competitive ratio of the \iocs in a special case. 
+\begin{thm}
+\label{thm:iocscompetitive}
+Let $\mathcal{A}$ be \ics in \iocs algorithm and $m=1$. Assuming that EVs are released in $b$ distinct groups where arrival time of EVs in each group are the same, the \iocs is $b\Big(1+\frac{p}{p-q}\frac{s}{s-1}\Big)$-competitive with optimal offline solution, where $p$ is the station peak and $q=\max_i k_i, i=1,\dots ,n$. 
+\end{thm}
+
+
+%\begin{thm}
+%\label{thm:iocscomplexity}
+%Let $\mathcal{A}$ be \ics in Line $1$ of \iocs. Then, the time complexity of the \iocs  is $O(n^2T)$. 
+%\end{thm}
+		
+		
+%\vspace{-6mm}

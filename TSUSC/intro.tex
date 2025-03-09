@@ -1,0 +1,68 @@
+\section{Introduction}
+\label{sec:intro}	
+%		\IEEEPARstart{A}{s} 
+%		a result of global warming and environmental concerns through dependence on fossil fuels, there has been a rapid proliferation in deploying renewable energy sources. 
+\IEEEPARstart{T}{o} promote quick adoption of renewable energy sources, electrification of vehicles is a trend that has been globally advocated in recent years. \rev{According to a Bloomberg report, EVs will account for more than half of the new car sales by $2040$~\cite{bloomberg}. 		
+	%the global sale of EVs increased by $80\%$ in $2015$~\cite{EVSales}.
+	%		With the significant advantage of electric vehicles (EVs) in being an environment friendly product, the global interest for EVs is rapidly growing, such that  
+	Consequently, it is expected that demand from EV charging will constitute a considerable portion of total demand. 
+	Currently, transportation consumes $29\%$ of total energy in the US, while electricity production consumes $40\%$~\cite{Zhao}.} 
+%Vehicles seen accounting for 5\% of electricity use by $2040$~\cite{EVSales2}}
+%%%\revv{\sout{Hence, rapid electrification of the vehicles makes the total electricity demand of EVs significant.}} 
+
+\revv{EV charging demand is a typical example of a deferrable load, and there is often considerable flexibility in the charging schedule. This property makes the problem of EV charging scheduling  important and there is an extensive research along this direction in the literature (see the recent survey~\cite{mukherjee2015review}, and references therein). In most of the existing works, the EV charging demand is treated as a constraint to the problem in a low-load regime~\cite{Tang}.  Motivated by rapid proliferation of EVs, this work tackles the EV scheduling in high-load regime, where given the aggregate charging demand of the EVs and the peak constraints of the charging network, it is not feasible to fully charge all the EVs according to their charging demand.}
+%		\subsection{Microgrid: Definition, Potentials, and Challenges}
+%		\label{sec:introA}
+%		A common trend in the smart grid era is to install renewable energy sources in distributed manner. More specifically, medium or large commercial and industrial  customers such as universities, headquarters, etc.,  can take control of their own energy consumption by local deployment of renewable sources~\cite{Hajiesmaili2016Online}. In this setting, the residual demand, i.e., total demand subtracted by the local renewable supply, can be acquired from the external grid. 
+
+%		In addition to clean energy production, the owner of microgrid also enjoys more power sustainability and reliability, and the ability to proactively manage the energy costs.  
+
+
+More specifically, this paper studies resource-constrained EV charging scheduling in an adaptive charging network (ACN) governed by a single operator in a campus-scale location such as a university, a headquarter\rev{s}, etc. \cite{wu2017two}. 
+\rev{A notable example is the Caltech ACN~\cite{lee2016adaptive,lee2018adaptive} where individual charging ports are organized into several \textit{charging stations} (CSs) which are dispersed in a \textit{charging network}} with the capability of adaptive charging of the EVs. 
+The problem is different from EV charging scheduling \revv{with capacity constraint} in single station scenarios~\cite{Tang,Wen,Shroff2014,WTang,Chen,Xiang,Zhao,Robu} (we refer to~Section~\ref{sec:rel} for detailed discussions on related work), because of the essential need to respect the aggregate peak demand of the ACN. \revv{Note that, the ACN operator might limit the total power drawn from EVs to control costs~\cite{PeakPrice,Zhang2015eEnergy}, reserve the capacity for other loads, and/or participate in demand-response programs.}
+%		The EV charging loads are usually flexible and deferrable, which means that their load can be scheduled~\cite{moghaddam2017smart,DWang} to shape the total demand over time. 
+%The aim of this paper is to use the deferrable property of EVs and schedule their charging jobs, so as to \rev{maximize the revenue of the ACN}.	
+%		We refer to Section~\ref{sec:rel} for the literature review. 	
+
+%		In particular, real-world pricing scheme for large customers is usually a hybrid time-of-use and peak-based charging model where the peak demand can significantly impact the total energy cost, e.g., the peak price is often more than $100$ times higher than the spot price~\cite{PeakPrice,Zhang2015eEnergy}. Considering total aggregate demand, the peak charge portion could be as large as $20\%-80\%$ of total cost~\cite{Xu2014Reducing}. Consequently, a substantial cost reduction could be achieved if the total peak-demand can be proactively controlled \cite{liao2015dispatch}. 
+
+%		\subsection{EV Charging Scheduling in the ACN}
+%		With the proliferation of EVs, the charging requirement of the microgrid EVs could be a portion of total microgrid electricity demand. 
+
+
+%		To respond the electricity demand of EVs, CSs are being used where EVs can recourse to charge their battery \cite{He,liao2015dispatch,Tang}. There can be few to many CSs dispersed in an ACN, e.g., each for a parking garage of a building in a university campus. In this scenario, all parking stations are governed by a facility operator and a \textit{global} peak demand constraint is determined such that the aggregate charging demand in the entire network is less than this global peak demand \cite{DWang,Hoog}.
+
+%		The charging scheduling of the EVs with the goal of respecting the \textit{global aggregate peak constraint}, however, is a unique problem which is different from the single station EV charging scheduling. Most of the existing work in the literature, tackle the problem in the single parking station scenario. We refer to Section~\ref{sec:rel} for in-depth discussion. As discussed in Section \ref{sec:problem}, the global optimal solution cannot be obtained by separately solving the single station problems. 
+%		On the other hand, there are only a few studies that provide global optimal solution for charging scheduling of EVs \cite{He, Moradijoz, Malhotra,Zeng,Shaaban,DWang}. Despite elegant results, the underlying problems, e.g., charging cost minimization problem in \cite{He}, average operating cost minimization with optimal electricity exchange capacity problem in \cite{DWang}, optimal station capacity problem in~\cite{Moradijoz}, user convenience maximization problem in~\cite{Malhotra}, joint optimization of system profit and user experience in~\cite{Shaaban,Zeng} are different from the problem studied in this paper.
+
+%		\subsection{Problem, Challenges, and Contributions}
+We consider a scenario with multiple EVs where each EV has different charging profile in terms of availability, charging demand, charging rate limit, and valuation of getting charged \revv{(for details see Section~\ref{sec:ev})}. We formulate an online EV charging scheduling problem with the goal of \textit{selecting} and \textit{scheduling} a subset of EVs such that: (1) the charging demand of the selected EVs are (fully or partially) satisfied; (2) the charging rate limit of EV batteries are respected, (3) the global peak constraint of the ACN is satisfied~\cite{lee2018adaptive}; (4) the local peak constraint of each CS is respected;  and finally, (5) the total revenue obtained by the valuation of the EVs is maximized. 
+
+
+
+%		of maximizing the revenue of the ACN. The constraints are the \textit{local} peak constraint of each CS, and the \textit{global} peak constraint that limits the accumulative charging demand drawn from the entire network of stations (decided by the administration of the ACN to control total peak demand~\cite{lee2018adaptive}). 
+
+There are two main challenges in the design and implementation of scheduling algorithms for EVs satisfying the goals mentioned above. \rev{Firstly, the problem calls for online scheduling design.} In practice, EVs arrive to the CS in online fashion and the scheduler has no information about the arrival and demand of the future EVs. Secondly, the underlying optimization problem in integral model is strongly NP-hard even in offline case \rev{(see Section~\ref{sec:integral})}. This is because the problem is a mixed integer linear problem and a ``time-expanded'' extension of knapsack problem which is known as a classic NP-hard problem. In this paper, we tackle the challenge of online design by following competitive algorithm design~\cite{borodin2005online} and the challenge of NP-hardness by pursuing approximation algorithm design~\cite{approx} and make the following contributions: 
+
+$\vartriangleright$ We first consider a \textit{fractional model} (where EVs can be charged partially and the revenue is proportional accordingly) and design an optimal offline scheduling algorithm. 
+%In addition to provide efficient result, the algorithm has a further elegant step to apply a valley filling strategy to further reduce the peak demand of EV charging without degrading total revenue. 
+We then develop an efficient online algorithm in which no exact or stochastic information about the future EV arrivals is given. Despite its simplicity, the algorithm is proved to be $2$-competitive with optimal offline solution, i.e., the revenue of the proposed online algorithm is at least $1/2$ of the offline optimum, regardless of input sequence. 
+Even though there are competitive algorithms in the literature for similar problems, to the best of our knowledge, our algorithm is the first $2$-competitive algorithm which considers the charging rate limits.
+
+$\vartriangleright$ We next study \rev{the} more challenging scenario of the \textit{integral model}, where EVs must receive all their demand to make revenue. We first propose a polynomial-time primal-dual offline approximate algorithm. We analyze the approximation ratio of the algorithm and by strengthening the linear relaxed version of the mixed integer problem~\cite{Carr}, we obtain an approximation ratio of $\alpha =1+\sum_{j=1}^m {\frac{p_j}{p_j-q_j}}.\frac{s}{s-1}$, where $p_j$ is local peak constraint in station $j$, $q_j$ is the maximum charging rate of the EVs in station $j$ and $s$ is a slackness parameter. We highlight that when $p_j \gg q_j$ and $s$ is \rev{large} enough, then $\alpha \approx m+1$, where $m$ is the number of stations in the ACN. Built on the basis of the offline algorithm, we devise an online algorithm, and discuss its competitive ratio in special cases. 
+%In particular, the competitive ratio is $b\Big(1+\frac{p_j}{p_j-q_j}\cdot\frac{s}{s-1}\Big)$ for single station scenario, where $b$ is the number of batches with the same arrival time.
+
+$\vartriangleright$ We conduct a set of  simulations to evaluate the performance of our proposed algorithms. 
+%For offline scheduling problem under integral charging model, the results  demonstrate that the proposed approximation algorithm is close to the optimal solution and is significantly better than the obtained theoretical bounds. 
+The results of online algorithms for both integral and fractional settings are close to the optimum (within $90\%$ and $94\%$ for integral and fractional models in a representative scenario). In addition, our algorithm outperforms the existing scheduling algorithm in Caltech ACN~\cite{lee2018adaptive} by $35\%$ for integral revenue model.
+
+This paper represents follow-up work to our previous study~\cite{alinia2018competitive}, where we address a simplified version of the problems studied in this paper in fractional revenue model. The competitive analysis in~\cite{alinia2018competitive} is done under the assumption that all EVs have the same maximum charging rate. Also, \cite{alinia2018competitive} does not study the integral revenue model. In this paper, we extend the results and propose a 2-competitive online algorithm with no assumption on the input parameters. Also, this paper investigates both fractional and integral models while considering global peak constraint and addressing multiple charging station scenario. Last, we consider more realistic trace-driven experiments in this paper and compare the results to an existing real-world scheduling algorithm.
+%The simulation section also discusses on the positive and negative effects of slackness parameter in different scenarios. 
+
+%To the best of our knowledge, this problem is not addressed yet in previous studies. 
+
+%		\subsection{Paper Organization}
+%		The rest of this paper is organized as follows. Section~\ref{sec:rel} reviews the literature. In Section \ref{sec:model}, the system model  and problem formulation are described. 
+%		Section \ref{sec:fractional} provides offline and online algorithms for fractional model. We study integral model in Section \ref{sec:integral} and propose online and offline algorithms. The simulation results are reported in Section~\ref{sec:simul}. Section~\ref{sec:conclusion} concludes the paper and highlights future directions.	
+
